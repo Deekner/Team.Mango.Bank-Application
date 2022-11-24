@@ -14,17 +14,17 @@ namespace Team.Mango.Bank_Application
 
     }
 
-    internal class CreateUser
+    internal class CreateUser 
     {
         public int[] index;
-        public string Acc_ID = "", _name = "";
+        public string _ID = "";
+        public string _name = "";
         public double Balance = 0;
-        int Age;
 
         public CreateUser() { }
-        public CreateUser(string Acc_id, string C_name, double Balance)
+        public CreateUser(string _id, string C_name, double Balance)
         {
-            this.Acc_ID = Acc_id;
+            this._ID = _id;
             this._name = C_name;
             this.Balance = Balance;
         }
@@ -35,9 +35,9 @@ namespace Team.Mango.Bank_Application
             try
             {
                 Console.Clear();
-                Console.Write("Enter The Account Number:\t");
-                Acc_ID = Console.ReadLine();
-                if (Acc_ID == null)
+                Console.Write("Enter The Account ID:\t");
+                _ID = Console.ReadLine();
+                if (_ID == null)
                     throw new Errors("You must enter the Account number!");
 
                 Console.Write("Enter The Customer Name:\t");
@@ -54,17 +54,17 @@ namespace Team.Mango.Bank_Application
             {
                 Console.Write(e.Message);
             }
-
+            // If creating user is succesfull Create_User() will return int 1
             return 1;
 
         }
 
         public void Admin_Availability(string Acc_num)
         {
-            if (Acc_ID.Equals(Acc_num))
+            if (_ID.Equals(Acc_num))
             {
                 Console.WriteLine("-----------------------------****************-----------------------------");
-                Console.WriteLine("Account Number:\t" + Acc_ID);
+                Console.WriteLine("Account Number:\t" + _ID);
                 Console.WriteLine("Name:\t\t" + _name);
                 Console.WriteLine("Balance: \t$" + Balance);
                 Console.WriteLine("-----------------------------****************-----------------------------");
