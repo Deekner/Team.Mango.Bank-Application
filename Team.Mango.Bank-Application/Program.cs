@@ -9,6 +9,8 @@ namespace Team.Mango.Bank_Application
             LogIn.Accounts();
             Menu.MenuOptions();
 
+            Console.WriteLine("Test Test Test From Dennis");
+
         }
     }
 }
