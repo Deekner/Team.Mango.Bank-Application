@@ -22,7 +22,6 @@ namespace Team.Mango.Bank_Application
             accountList.Add(dennis);
             accountList.Add(anton);
 
-
             Console.WriteLine("Please enter your username: ");
             string username = "";
             Users CurrentUser;
@@ -33,26 +32,57 @@ namespace Team.Mango.Bank_Application
                 {
                     username = Console.ReadLine();
                     CurrentUser = accountList.Find(a => a._username == username);
-                    if (CurrentUser != null)
+                    if (CurrentUser != null || CurrentUser == Admin)
                     {
                         break;
                     }
+                    else
+                    {
+                        Console.WriteLine("User Is not listed in the database");
+                    }
+
                 }
-                catch { Console.WriteLine("Incorrect input"); }
+                catch 
+                { 
+                    Console.WriteLine("User Is not listed in the database");         
+                }
             }
 
             while (true)
             {
-                string PasswordInput = "";
-
-                Console.WriteLine("Please enter your password: ");
-                PasswordInput = Console.ReadLine();
-                if (CurrentUser.getpw() == PasswordInput)
+                try
                 {
-                    break;
+                    string PasswordInput = "";
+
+                    Console.WriteLine("Please enter your password: ");
+                    PasswordInput = Console.ReadLine();
+                    if (CurrentUser.getpw() == PasswordInput)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Password is incorrect");
+                    }
                 }
+                catch 
+                { 
+                    Console.WriteLine("Password is incorrect"); 
+                }
+
             }
-            Menu.MenuOptions();
+            if (CurrentUser == Admin)
+            {
+                AdminMenu.AdminOptions();
+            }
+            else
+            {
+                Menu.MenuOptions();
+            }
+            Console.Clear();
+
+
+
 
             //UserAccount checkuserAccount = 
 

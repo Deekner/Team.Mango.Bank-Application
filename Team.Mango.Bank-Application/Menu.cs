@@ -7,7 +7,7 @@ namespace Team.Mango.Bank_Application
     internal class Menu
     {
         public static void MenuOptions()
-        {
+        {          
             do
             {
 
@@ -58,10 +58,14 @@ namespace Team.Mango.Bank_Application
             } while (true);
         }
 
-      
-
-       
-
+        //public string void Testpage()
+        //{
+        //    foreach (Users item in )
+        //    {
+        //        Console.WriteLine("id = {0}, name = {1}", item._id, item._username);
+        //    }
+        //}
+    
       
     }
 }
