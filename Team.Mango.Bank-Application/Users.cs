@@ -21,5 +21,17 @@ namespace Team.Mango.Bank_Application
         {
             return $"Id: {_id}\nName: {_username}\nPassword: {_password}";
         }
+        public int getId()
+        {
+            return _id;
+        }
+        public string getUsername()
+        {
+            return _username;
+        }
+        public string getpw()
+        {
+            return _password;
+        }
     }
 }
