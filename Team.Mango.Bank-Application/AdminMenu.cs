@@ -12,6 +12,7 @@ namespace Team.Mango.Bank_Application
             string Acc_num;
             string choice;
 
+            // Create object so we can use function Create_User() from CreateUser class
             CreateUser CU = new CreateUser();
 
 
@@ -34,12 +35,12 @@ namespace Team.Mango.Bank_Application
                 switch (choice)
                 {
                     case "1":
-
+                        //Sending Admin to Fuction Create_User and see if result/return turn out to be successfull
                         result = CU.Create_User();
                         if (result == 1)
                         {
                             Console.Clear();
-                            Console.WriteLine("Account number \"{0}\" Created Successfuly", CU.Acc_ID);
+                            Console.WriteLine("Account number \"{0}\" Created Successfuly", CU._ID);
                         }
                         else
                         {
