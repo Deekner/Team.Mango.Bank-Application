@@ -7,7 +7,7 @@ namespace Team.Mango.Bank_Application
         static void Main(string[] args)
         {
             LogIn.Accounts();
-            Menu.MenuOptions();
+           
 
             Console.WriteLine("Test Test Test From Dennis");
 

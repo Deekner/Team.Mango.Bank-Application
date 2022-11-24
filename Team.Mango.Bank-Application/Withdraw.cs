@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Team.Mango.Bank_Application
 {
-    internal class Withdraw
+    internal class Withdraw : Menu
     {
+        public static void withdraw()
+        {
+
+        }
+
+
     }
 }

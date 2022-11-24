@@ -8,16 +8,20 @@ namespace Team.Mango.Bank_Application
     {
         public static void Accounts()
         {
-            UserAccount tim = new UserAccount(1, "Tim", "1111");
-            UserAccount elin = new UserAccount(2, "Elin", "2222");
-            UserAccount dennis = new UserAccount(3, "Dennis", "3333");
-            UserAccount anton = new UserAccount(4, "Anton", "4444");
+            Users Admin = new Users(0, "Admin", "0000");
+            Users tim = new Users(1, "Tim", "1111");
+            Users elin = new Users(2, "Elin", "2222");
+            Users dennis = new Users(3, "Dennis", "3333");
+            Users anton = new Users(4, "Anton", "4444");
+            
 
-            List<UserAccount> accountList = new List<UserAccount>();
+            List<Users> accountList = new List<Users>();
+            accountList.Add(Admin);
             accountList.Add(tim);
             accountList.Add(elin);
             accountList.Add(dennis);
             accountList.Add(anton);
+
 
 
 
@@ -33,12 +37,19 @@ namespace Team.Mango.Bank_Application
 
                 for (int i = 0; i < accountList.Count; i++)
                 {
-                    if (accountList.Exists(x => string.Equals(x._username, UserNameInput)) && accountList.Exists(p => string.Equals(p._password, PasswordInput)))
+                    //Test admin account
+                    if (UserNameInput == "Admin" && PasswordInput == "0000")
                     {
-                        Console.WriteLine("Hej");
-                        Attempt = 4;
-                        break;
+                        AdminMenu.AdminOptions();
                     }
+                    //if (accountList.Exists(x => string.Equals(x._username, UserNameInput)) && accountList.Exists(p => string.Equals(p._password, PasswordInput)))
+                    //{
+                    //    Console.WriteLine("Hej");
+                    //    Attempt = 4;
+                    //    Menu.MenuOptions();
+                    //    break;
+                    //}
+
                 }
                 Attempt++;
             } while (Attempt < 4);
@@ -48,7 +59,7 @@ namespace Team.Mango.Bank_Application
 
 
 
-            foreach (UserAccount item in accountList)
+            foreach (Users item in accountList)
             {
 
             }
