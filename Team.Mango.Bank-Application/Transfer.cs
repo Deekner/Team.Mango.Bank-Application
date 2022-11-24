@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Team.Mango.Bank_Application
 {
-    internal class Transfer
+    internal class Transfer : Menu
     {
+        public static void transfer()
+        {
+
+        }
+
+
     }
 }

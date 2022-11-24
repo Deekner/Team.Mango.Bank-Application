@@ -28,15 +28,15 @@ namespace Team.Mango.Bank_Application
                     switch (choice)
                     {
                         case 1:
-                            accounts();
+                            Bankaccount.bankaccount();
                             break;
 
                         case 2:
-                            transfer();
+                            Transfer.transfer();
                             break;
 
                         case 3:
-                            withdraw();
+                            Withdraw.withdraw();
                             break;
 
                         case 4:
@@ -58,19 +58,10 @@ namespace Team.Mango.Bank_Application
             } while (true);
         }
 
-        public static void accounts()
-        {
+      
 
-        }
+       
 
-        public static void transfer()
-        {
-
-        }
-
-        public static void withdraw()
-        {
-
-        }
+      
     }
 }

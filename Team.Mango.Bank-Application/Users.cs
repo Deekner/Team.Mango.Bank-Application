@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Team.Mango.Bank_Application
 {
-    public class UserAccount
+    public class Users
     {
         internal int _id { get; set; }
         internal string _username { get; set; }
         internal string _password { get; set; }
 
-        public UserAccount(int id, string Username, string Password)
+        public Users(int id, string Username, string Password)
         {
             _id = id;
             _username = Username;
