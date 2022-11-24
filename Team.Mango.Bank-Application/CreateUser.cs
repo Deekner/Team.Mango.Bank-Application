@@ -80,7 +80,7 @@ namespace Team.Mango.Bank_Application
             {
 
 
-                if (Acc_ID.Equals(Acc_num))
+                if (_ID.Equals(Acc_num))
                 {
                     Console.Write("Enter the amount:\t\t");
                     int Amount = int.Parse(Console.ReadLine());
@@ -109,7 +109,7 @@ namespace Team.Mango.Bank_Application
         }
         public void Withdraw(string Acc_num)
         {
-            if (Acc_ID.Equals(Acc_num))
+            if (_ID.Equals(Acc_num))
             {
                 Console.Write("Enter the amount:\t\t");
                 int Amount = int.Parse(Console.ReadLine());
