@@ -22,15 +22,17 @@ namespace Team.Mango.Bank_Application
             accountList.Add(dennis);
             accountList.Add(anton);
 
-            Console.WriteLine("Please enter your username: ");
-            string username = "";
+
+
+            Console.Write("Please enter your username: ");
+            
             Users CurrentUser;
 
             while (true)
             {
                 try
                 {
-                    username = Console.ReadLine();
+                    string username = Console.ReadLine();
                     CurrentUser = accountList.Find(a => a._username == username);
                     if (CurrentUser != null || CurrentUser == Admin)
                     {
@@ -52,13 +54,12 @@ namespace Team.Mango.Bank_Application
             {
                 try
                 {
-                    string PasswordInput = "";
-
-                    Console.WriteLine("Please enter your password: ");
-                    PasswordInput = Console.ReadLine();
+                    Console.Write("Please enter your password: ");
+                    string PasswordInput = Console.ReadLine();
+                    Console.Clear();
                     if (CurrentUser.getpw() == PasswordInput)
                     {
-                        break;
+                        break;                        
                     }
                     else
                     {
@@ -68,8 +69,7 @@ namespace Team.Mango.Bank_Application
                 catch 
                 { 
                     Console.WriteLine("Password is incorrect"); 
-                }
-
+                }              
             }
             if (CurrentUser == Admin)
             {
