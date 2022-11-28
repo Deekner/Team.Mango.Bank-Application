@@ -10,6 +10,7 @@ namespace Team.Mango.Bank_Application
         internal string _username { get; set; }
         internal string _password { get; set; }
 
+
         public Users(int id, string Username, string Password)
         {
             _id = id;
