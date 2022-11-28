@@ -4,10 +4,13 @@ using System.Text;
 
 namespace Team.Mango.Bank_Application
 {
-    internal class Menu
+    public class Menu 
     {
+       
+
         public static void MenuOptions()
-        {          
+        {
+            bool menu = true;
             do
             {
 
@@ -28,7 +31,9 @@ namespace Team.Mango.Bank_Application
                     switch (choice)
                     {
                         case 1:
-                            Bankaccount.bankaccount();
+                            SavingAccount.ShowAccount();
+                            Console.WriteLine("Hej");
+                            menu = false;
                             break;
 
                         case 2:
@@ -54,8 +59,8 @@ namespace Team.Mango.Bank_Application
                     Console.ReadLine();
                 }
 
-                Console.Clear();
-            } while (true);
+                
+            } while (menu = true);
         }
 
         //public string void Testpage()
