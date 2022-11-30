@@ -6,11 +6,9 @@ namespace Team.Mango.Bank_Application
 {
     public class Menu 
     {
-       
 
-        public static void MenuOptions()
+        public static void MenuOptions(Users CurrentUser)
         {
-            bool menu = true;
             do
             {
 
@@ -31,9 +29,7 @@ namespace Team.Mango.Bank_Application
                     switch (choice)
                     {
                         case 1:
-                            SavingAccount.ShowAccount();
-                            Console.WriteLine("Hej");
-                            menu = false;
+                            Bankaccount.bankaccount(CurrentUser);
                             break;
 
                         case 2:
@@ -58,10 +54,10 @@ namespace Team.Mango.Bank_Application
                     Console.WriteLine("Invalid Input!");
                     Console.ReadLine();
                 }
-
-                
-            } while (menu = true);
+            } while (true);
         }
+    }
+}
 
         //public string void Testpage()
         //{
@@ -72,5 +68,3 @@ namespace Team.Mango.Bank_Application
         //}
     
       
-    }
-}
