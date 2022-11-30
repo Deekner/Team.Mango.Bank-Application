@@ -8,11 +8,12 @@ namespace Team.Mango.Bank_Application
     {
         public static void Accounts()
         {
-            Users Admin = new Users(0, "Admin", "0000");
-            Users tim = new Users(1, "Tim", "1111");
-            Users elin = new Users(2, "Elin", "2222");
-            Users dennis = new Users(3, "Dennis", "3333");
-            Users anton = new Users(4, "Anton", "4444");
+            
+            Users Admin = new Users(0, "Admin", "0000", 0, 0);
+            Users tim = new Users(1, "Tim", "1111", 34932, 1200623);
+            Users elin = new Users(2, "Elin", "2222", 69809, 20000);
+            Users dennis = new Users(3, "Dennis", "3333", 2036, 2342324);
+            Users anton = new Users(4, "Anton", "4444", 34689, 23434);
             
 
             List<Users> accountList = new List<Users>();
@@ -22,18 +23,16 @@ namespace Team.Mango.Bank_Application
             accountList.Add(dennis);
             accountList.Add(anton);
 
-
-
             Console.Write("Please enter your username: ");
-            
+
             Users CurrentUser;
 
-            while (true)
+            while (true) //Potentially swap this while loop to a do-while?
             {
                 try
                 {
                     string username = Console.ReadLine();
-                    CurrentUser = accountList.Find(a => a._username == username);
+                    CurrentUser = accountList.Find(a => a._username == username); //Finds a matching username in accountList and pulls all information from that specific username
                     if (CurrentUser != null || CurrentUser == Admin)
                     {
                         break;
@@ -49,7 +48,7 @@ namespace Team.Mango.Bank_Application
                     Console.WriteLine("User Is not listed in the database");         
                 }
             }
-
+            
             while (true)
             {
                 try
@@ -57,7 +56,7 @@ namespace Team.Mango.Bank_Application
                     Console.Write("Please enter your password: ");
                     string PasswordInput = Console.ReadLine();
                     Console.Clear();
-                    if (CurrentUser.getpw() == PasswordInput)
+                    if (CurrentUser.getpw() == PasswordInput) //If the password matches the username input, it returns the values from listed password
                     {
                         break;                        
                     }
@@ -71,13 +70,15 @@ namespace Team.Mango.Bank_Application
                     Console.WriteLine("Password is incorrect"); 
                 }              
             }
+
+            //Admin goes to AdminOptions if logged in and all regular users goes to normal menu
             if (CurrentUser == Admin)
             {
-                AdminMenu.AdminOptions();
+                AdminMenu.AdminOptions(CurrentUser);
             }
             else
             {
-                Menu.MenuOptions();
+                Menu.MenuOptions(CurrentUser);
             }
             Console.Clear();
 
@@ -124,6 +125,8 @@ namespace Team.Mango.Bank_Application
             //    }
         }
 
+        
+ 
         /*public static int SignIn()
         {
             Console.WriteLine("Enter your username");

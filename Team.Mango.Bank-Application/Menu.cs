@@ -6,7 +6,7 @@ namespace Team.Mango.Bank_Application
 {
     internal class Menu
     {
-        public static void MenuOptions()
+        public static void MenuOptions(Users CurrentUser)
         {          
             do
             {
@@ -28,7 +28,7 @@ namespace Team.Mango.Bank_Application
                     switch (choice)
                     {
                         case 1:
-                            Bankaccount.bankaccount();
+                            Bankaccount.bankaccount(CurrentUser);
                             break;
 
                         case 2:
@@ -53,8 +53,6 @@ namespace Team.Mango.Bank_Application
                     Console.WriteLine("Invalid Input!");
                     Console.ReadLine();
                 }
-
-                Console.Clear();
             } while (true);
         }
 

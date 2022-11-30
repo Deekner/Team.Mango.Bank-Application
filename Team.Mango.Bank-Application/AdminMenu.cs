@@ -6,7 +6,7 @@ namespace Team.Mango.Bank_Application
 {
     internal class AdminMenu
     {
-        public static void AdminOptions()
+        public static void AdminOptions(Users currentuser)
         {
             int result;
             string Acc_num;
@@ -22,13 +22,13 @@ namespace Team.Mango.Bank_Application
 
                 Console.WriteLine("            ADMIN MAIN MENU            ");
                 Console.WriteLine("---------------------------------------");
-                Console.WriteLine("|    [1.]  Create New Account        | ");
-                Console.WriteLine("|    [2.]  Check accounts            | ");
-                Console.WriteLine("|    [3.]  Diposit                   | ");
-                Console.WriteLine("|    [4.]  Withdraw                  | ");
-                Console.WriteLine("|    [5.]  Transfer                  | ");
-                Console.WriteLine("|    [6.]  Logout                    | ");
-                Console.WriteLine("|    [7.]  Exit application          | ");
+                Console.WriteLine("| [1.]   Create New Account           | ");
+                Console.WriteLine("| [2.]   Check accounts               | ");
+                Console.WriteLine("| [3.]   Diposit                      | ");
+                Console.WriteLine("| [4.]   Withdraw                     | ");
+                Console.WriteLine("| [5.]   Transfer                     | ");
+                Console.WriteLine("| [6.]   Logout                       | ");
+                Console.WriteLine("| [7.]   Exit application             | ");
                 Console.WriteLine("--------------------------------------");
                 choice = Console.ReadLine();
 
