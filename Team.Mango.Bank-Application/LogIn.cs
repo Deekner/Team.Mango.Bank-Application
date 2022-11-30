@@ -9,7 +9,7 @@ namespace Team.Mango.Bank_Application
         public static void Accounts()
         {
             
-            Users Admin = new Users(0, "Admin", "0000", 0, 0);
+            Users Admin = new Users(0, "Admin", "0000", 0, 99999);
             Users tim = new Users(1, "Tim", "1111", 34932, 1200623);
             Users elin = new Users(2, "Elin", "2222", 69809, 20000);
             Users dennis = new Users(3, "Dennis", "3333", 2036, 2342324);
