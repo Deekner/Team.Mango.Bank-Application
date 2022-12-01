@@ -8,11 +8,11 @@ namespace Team.Mango.Bank_Application
         public static void Accounts()
         {
 
-            Users Admin = new Users(0, "Admin", "0000", 0, 99999);
-            Users tim = new Users(1, "Tim", "1111", 34932, 1200623);
-            Users elin = new Users(2, "Elin", "2222", 69809, 20000);
-            Users dennis = new Users(3, "Dennis", "3333", 2036, 2342324);
-            Users anton = new Users(4, "Anton", "4444", 34689, 23434);
+            Users Admin = new Users("Admin", "0000");
+            Users tim = new Users("Tim", "1111");
+            Users elin = new Users("Elin", "2222");
+            Users dennis = new Users("Dennis", "3333");
+            Users anton = new Users("Anton", "4444");
 
 
             List<Users> accountList = new List<Users>();
@@ -26,6 +26,7 @@ namespace Team.Mango.Bank_Application
             int tries = 0;
             bool Granted = true;
             Users CurrentUser;
+            
 
             do
             {
@@ -47,7 +48,16 @@ namespace Team.Mango.Bank_Application
                     if (CurrentUser.getpw() == PasswordInput) //If the password matches the username input, it returns the values from listed password
                     {
                         Console.Clear();
-                        Console.WriteLine("Logged in as {0}", username);                       
+                        if (CurrentUser == Admin)
+                        {
+                            //Admin goes to AdminOptions if logged in and all regular users goes to normal menu
+                            AdminMenu.AdminOptions(CurrentUser);
+                        }
+                        else
+                        {
+                            Menu.MenuOptions(username);
+                        }
+                        Console.Clear();
                         Granted = false;
                     }
                     else
@@ -69,16 +79,16 @@ namespace Team.Mango.Bank_Application
 
             } while (Granted);
 
-            if (CurrentUser == Admin)
-            {
-                //Admin goes to AdminOptions if logged in and all regular users goes to normal menu
-                AdminMenu.AdminOptions(CurrentUser);
-            }
-            else
-            {
-                Menu.MenuOptions(CurrentUser);
-            }
-            Console.Clear();
+            //if (CurrentUser == Admin)
+            //{
+            //    //Admin goes to AdminOptions if logged in and all regular users goes to normal menu
+            //    AdminMenu.AdminOptions(CurrentUser);
+            //}
+            //else
+            //{
+            //    Menu.MenuOptions(userName);
+            //}
+            //Console.Clear();
 
 
 

@@ -7,11 +7,12 @@ namespace Team.Mango.Bank_Application
     public class Menu 
     {
 
-        public static void MenuOptions(Users CurrentUser)
+        public static void MenuOptions(string username)
         {
             do
             {
-
+                Console.Clear();
+                Console.WriteLine("Logged in as {0}", username);
                 Console.WriteLine("             MAIN MENU             ");
                 Console.WriteLine("--------------------------------------");
                 Console.WriteLine("|    [1.]  Accounts                  | ");
@@ -29,11 +30,11 @@ namespace Team.Mango.Bank_Application
                     switch (choice)
                     {
                         case 1:
-                            Bankaccount.bankaccount(CurrentUser);
+                            SavingAccount.ShowAccount(username);
                             break;
 
                         case 2:
-                            Transfer.transfer();
+                            Transfer.transfer(username);
                             break;
 
                         case 3:

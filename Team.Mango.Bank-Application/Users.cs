@@ -6,29 +6,24 @@ namespace Team.Mango.Bank_Application
 {
     public class Users
     {
-        internal int _id { get; set; }
+        
         internal string _username { get; set; }
         internal string _password { get; set; }
-        internal decimal _balance { get; }
-        internal decimal _savings { get; }
+       
 
-        public Users(int id, string Username, string Password, decimal Balance, decimal Savings)
+        public Users(string Username, string Password)
         {
-            _id = id;
+            
             _username = Username;
             _password = Password;
-            _balance = Balance;
-            _savings = Savings;
+           
         }
 
         public override string ToString()
         {
-            return $"Id: {_id}\nName: {_username}\nPassword: {_password}";
+            return $"Name: {_username}\nPassword: {_password}";
         }
-        public int getId()
-        {
-            return _id;
-        }
+       
         public string getUsername()
         {
             return _username;
@@ -37,13 +32,6 @@ namespace Team.Mango.Bank_Application
         {
             return _password;
         }
-        public decimal balance()
-        {
-            return _balance;
-        }
-        public decimal Savings()
-        {
-            return _savings;
-        }
+       
     }
 }
