@@ -19,15 +19,15 @@ namespace Team.Mango.Bank_Application
 
             switch (choice)
             {
-                case 1:
-                    Console.WriteLine("Your current balance is: {0}\n", Currentuser.balance().ToString("C"));
+                case 1:   
+                    Console.WriteLine("Your current balance is: {0}\n", Currentuser.balance().ToString("C2"));
                     Console.WriteLine("Press [Enter] to return");
                     Console.ReadLine();
                     bankaccount(Currentuser);
                     break;
 
                 case 2:
-                    Console.WriteLine("Your current savings balance is: {0}\n", Currentuser.Savings());
+                    Console.WriteLine("Your current savings balance is: {0}\n", Currentuser.Savings().ToString("C2"));
                     Console.WriteLine("Press [Enter] to return");
                     Console.ReadLine();
                     bankaccount(Currentuser);
