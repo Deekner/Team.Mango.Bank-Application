@@ -20,7 +20,7 @@ namespace Team.Mango.Bank_Application
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("Your current balance is: {0}\n", Currentuser.balance());
+                    Console.WriteLine("Your current balance is: {0}\n", Currentuser.balance().ToString("C"));
                     Console.WriteLine("Press [Enter] to return");
                     Console.ReadLine();
                     bankaccount(Currentuser);
