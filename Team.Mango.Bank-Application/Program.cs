@@ -6,13 +6,15 @@ namespace Team.Mango.Bank_Application
     {
         static void Main(string[] args)
         {
-            LogIn.Accounts();
+
+            //Create object of BankStart to run BankRun function
+            BankStart runbank = new BankStart();
+            runbank.RunBank();
+
+
+
+
             
-
-
-
-
-            Console.WriteLine("Test Test Test From Dennis");
 
         }
     }

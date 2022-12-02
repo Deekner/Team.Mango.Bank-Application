@@ -1,152 +1,94 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Team.Mango.Bank_Application
-{
-    class LogIn
+{   // only add login function here
+    public class Login
     {
-        public static void Accounts()
+        public bool LoginGranted = false;
+        public int Attempt = 2;
+
+        public void UserLogin(List<User> accounts)
         {
-
-            Users Admin = new Users("Admin", "0000");
-            Users tim = new Users("Tim", "1111");
-            Users elin = new Users("Elin", "2222");
-            Users dennis = new Users("Dennis", "3333");
-            Users anton = new Users("Anton", "4444");
-
-
-            List<Users> accountList = new List<Users>();
-            accountList.Add(Admin);
-            accountList.Add(tim);
-            accountList.Add(elin);
-            accountList.Add(dennis);
-            accountList.Add(anton);
-
-
-            int tries = 0;
-            bool Granted = true;
-            Users CurrentUser;
-            
-
-            do
+            Console.Clear();
+            Console.WriteLine("Please enter Username and Password");
+            while (LoginGranted == false)
             {
-                if (tries == 3)
-                {
-                    Environment.Exit(0);
-                }
-
-
-                Console.Write("Please enter your username: ");
+                Console.Write("Username: ");
                 string username = Console.ReadLine();
-                Console.Write("Please enter your password: ");
-                string PasswordInput = Console.ReadLine();
+                Console.Write("Password: ");
+                string password = Console.ReadLine();
 
-
-                CurrentUser = accountList.Find(a => a._username == username); //Finds a matching username in accountList and pulls all information from that specific username
-                if (CurrentUser != null || CurrentUser == Admin)
+                foreach (var users in accounts)
                 {
-                    if (CurrentUser.getpw() == PasswordInput) //If the password matches the username input, it returns the values from listed password
+                    if (username == users.Username && password == users.Password)
                     {
-                        Console.Clear();
-                        if (CurrentUser == Admin)
-                        {
-                            //Admin goes to AdminOptions if logged in and all regular users goes to normal menu
-                            AdminMenu.AdminOptions(CurrentUser);
-                        }
-                        else
-                        {
-                            Menu.MenuOptions(username);
-                        }
-                        Console.Clear();
-                        Granted = false;
+                       
+                            LoginGranted = true;
+                            User Check = accounts.Find(s => s.Username == username);
+                            Menu.MenuOptions(accounts, Check);
+                            Console.ReadKey();
+                       
                     }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Username or Password is incorrect");
-                        tries++;
-                        Console.WriteLine("{0} out of 3",tries);
-                    }
+                }
+                if (Attempt == 0)
+                {
+                    LoginGranted = false;
+                    Console.WriteLine("You have tried to meny times....");
+                    Environment.Exit(1);
                 }
                 else
                 {
-                    Console.Clear();
-                    Console.WriteLine("Username or Password is incorrect");
-                    tries++;
-                    Console.WriteLine("{0} out of 3", tries);
+                    LoginGranted = false;
+                    Console.WriteLine("Wrong username or password! You have " + Attempt + " attempts left");
+                    Attempt--;
+                    LoginGranted = false;
                 }
-
-
-            } while (Granted);
-
-            //if (CurrentUser == Admin)
-            //{
-            //    //Admin goes to AdminOptions if logged in and all regular users goes to normal menu
-            //    AdminMenu.AdminOptions(CurrentUser);
-            //}
-            //else
-            //{
-            //    Menu.MenuOptions(userName);
-            //}
-            //Console.Clear();
-
-
-
-
-
+            }
         }
+
+
+        //public void loginAdmin(List<User> accounts, User activeUser)
+        //{
+        //    do
+        //    {
+        //        Console.Clear();
+        //        Console.WriteLine("1. Update Currency Rates (Current Rate: {0})", Math.Round(objRates._Rate, 2));
+        //        Console.WriteLine("2. Create Account");
+        //        Console.WriteLine("3. Show all Accounts");
+        //        Console.WriteLine("4. Log out");
+        //        int menu = int.Parse(Console.ReadLine());
+
+        //        switch (menu)
+        //        {
+        //            case 1:
+                        
+        //                break;
+        //            case 2:
+        //                User.CreateUser(accounts, true, activeUser);
+        //                break;
+        //            case 3:
+        //                activeUser.PrintAllUsers(accounts, activeUser, objRates);
+        //                break;
+        //            case 4:
+        //                Login logout = new Login();
+        //                logout.UserLogin(accounts, objRates);
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    } while (true);
+        //}
+
+
+
+
+
+
+
+
+
+
     }
 }
-
-
-
-//UserAccount checkuserAccount = 
-
-//    int Attempt = 1;
-//    do
-//    {
-//        Console.WriteLine("Please enter your username");
-//        string UserNameInput = Console.ReadLine();
-//        Console.WriteLine("Please enter your password");
-//        string PasswordInput = Console.ReadLine();
-
-//        for (int i = 0; i < accountList.Count; i++)
-//        {
-//            //Test admin account
-//            if (UserNameInput == "Admin" && PasswordInput == "0000")
-//            {
-//                AdminMenu.AdminOptions();
-//            }
-//            //if (accountList.Exists(x => string.Equals(x._username, UserNameInput)) && accountList.Exists(p => string.Equals(p._password, PasswordInput)))
-//            //{
-//            //    Console.WriteLine("Hej");
-//            //    Attempt = 4;
-//            //    Menu.MenuOptions();
-//            //    break;
-//            //}
-
-//        }
-//        Attempt++;
-//    } while (Attempt < 4);
-
-//    //UserAccount findUserName = accountList.Find(f => f._username == UserNameInput);
-//    //UserAccount findPassword = accountList.Find(p => p._password == PasswordInput);
-
-
-
-//    foreach (Users item in accountList)
-//    {
-
-//    }
-
-
-/*public static int SignIn()
-{
-    Console.WriteLine("Enter your username");
-    foreach (UserAccount item in accountList)
-
-
-    return 0;
-
-}
-*/
