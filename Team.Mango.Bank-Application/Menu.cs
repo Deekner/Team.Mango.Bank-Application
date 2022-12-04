@@ -41,7 +41,8 @@ namespace Team.Mango.Bank_Application
                             break;
 
                         case 4:
-                            
+                            Login logout = new Login();
+                            logout.UserLogin(Users);
                             break;
 
                         default:
