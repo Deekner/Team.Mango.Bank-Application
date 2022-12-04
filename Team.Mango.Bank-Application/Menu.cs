@@ -33,7 +33,8 @@ namespace Team.Mango.Bank_Application
                             break;
 
                         case 2:
-                            Transfer.transfer();
+                            Transfer transfer = new Transfer();
+                            transfer.transferMenu(CurrentUser.BankAccountList, CurrentUser, Users);
                             break;
 
                         case 3:

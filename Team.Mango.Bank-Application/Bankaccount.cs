@@ -35,7 +35,7 @@ namespace Team.Mango.Bank_Application
             List<BankAccount> UserAcc = CurrentUser.BankAccountList;
             foreach (var item in UserAcc)
             {
-                double balance = i.Balance;
+                double balance = item.Balance;
                 Console.WriteLine(A + ". {0}: {1:f2} SEK", item.AccountName, balance);
                 Console.WriteLine();
                 A++;
