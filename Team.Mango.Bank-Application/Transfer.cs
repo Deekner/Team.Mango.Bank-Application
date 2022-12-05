@@ -6,7 +6,10 @@ namespace Team.Mango.Bank_Application
 {
     internal class Transfer 
     {
-       
-       
+        public static void transfer()
+        {
+
+        }
+
     }
 }

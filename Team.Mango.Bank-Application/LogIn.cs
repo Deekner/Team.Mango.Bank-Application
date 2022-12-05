@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Team.Mango.Bank_Application
-{   // only add login function here
+{   // Login fuction and admin menu
     public class Login
     {
         public bool LoginGranted = false;
         public int Attempt = 2;
 
-        public void UserLogin(List<User> accounts)
+        //UserLogin method gets data from BankStart List<User> Users
+        public void UserLogin(List<User> Users)
         {
             Console.Clear();
             Console.WriteLine("Please enter Username and Password");
@@ -20,16 +21,35 @@ namespace Team.Mango.Bank_Application
                 Console.Write("Password: ");
                 string password = Console.ReadLine();
 
-                foreach (var users in accounts)
+                //Check if username and password is matching with List<User> named Users
+                foreach (var user in Users)
                 {
-                    if (username == users.Username && password == users.Password)
+
+                    if (username == user.Username && password == user.Password)
                     {
-                       
+                        // Checking if the user that logged in have acces to admin abillity
+                        if (user.AdminCheck == true)
+                        {
+                            //Admin
                             LoginGranted = true;
-                            User Check = accounts.Find(s => s.Username == username);
-                            Menu.MenuOptions(accounts, Check);
-                            Console.ReadKey();
-                       
+                            User CurrentUser = Users.Find(f => f.Username == username);
+                            //Sending Users if Admin need to create a new user
+                            AdminMenu(Users, CurrentUser);
+
+
+
+                        }
+                        else if (user.AdminCheck != true)
+                        {
+                            //Standard user
+                            LoginGranted = true;
+                            //Checking if Username exist
+                            User CurrentUser = Users.Find(f => f.Username == username);
+                            Menu.MenuOptions(Users, CurrentUser);
+
+                        }
+
+
                     }
                 }
                 if (Attempt == 0)
@@ -41,7 +61,7 @@ namespace Team.Mango.Bank_Application
                 else
                 {
                     LoginGranted = false;
-                    Console.WriteLine("Wrong username or password! You have " + Attempt + " attempts left");
+                    Console.WriteLine("Invilid Username or Password! you have" + Attempt + " attempts left");
                     Attempt--;
                     LoginGranted = false;
                 }
@@ -49,41 +69,60 @@ namespace Team.Mango.Bank_Application
         }
 
 
-        //public void loginAdmin(List<User> accounts, User activeUser)
-        //{
-        //    do
-        //    {
-        //        Console.Clear();
-        //        Console.WriteLine("1. Update Currency Rates (Current Rate: {0})", Math.Round(objRates._Rate, 2));
-        //        Console.WriteLine("2. Create Account");
-        //        Console.WriteLine("3. Show all Accounts");
-        //        Console.WriteLine("4. Log out");
-        //        int menu = int.Parse(Console.ReadLine());
-
-        //        switch (menu)
-        //        {
-        //            case 1:
-                        
-        //                break;
-        //            case 2:
-        //                User.CreateUser(accounts, true, activeUser);
-        //                break;
-        //            case 3:
-        //                activeUser.PrintAllUsers(accounts, activeUser, objRates);
-        //                break;
-        //            case 4:
-        //                Login logout = new Login();
-        //                logout.UserLogin(accounts, objRates);
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    } while (true);
-        //}
 
 
+        //ADMIN Menu
+        public void AdminMenu(List<User> Users, User CurrentUser)
+        {
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("             MAIN MENU             ");
+                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("|    [1.]  Show All Users          | ");
+                Console.WriteLine("|    [2.]  Create Account            | ");
+                Console.WriteLine("|    [3.]  Logout                    | ");
+                Console.WriteLine("|    [4.]  Exit application          | ");
+                Console.WriteLine("--------------------------------------");
 
 
+                try
+                {
+                    int choice = int.Parse(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            CurrentUser.ShowAllUsers(Users, CurrentUser);
+                            break;
+
+                        case 2:
+                            // Sending list of Users and CurrentUser and if Admin is true
+                            User.CreateUser(Users,CurrentUser, true);
+                            break;
+
+                        case 3:
+                            Login logout = new Login();
+                            logout.UserLogin(Users);
+                            break;
+                            
+
+                        case 4:
+                            Environment.Exit(0);
+                            break;
+
+                        default:
+                            Environment.Exit(0);
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid Input!");
+                    Console.ReadLine();
+                }
+            } while (true);
+        }
 
 
 
@@ -91,4 +130,11 @@ namespace Team.Mango.Bank_Application
 
 
     }
+
+
+
 }
+
+
+
+
