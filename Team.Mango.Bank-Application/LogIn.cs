@@ -25,7 +25,8 @@ namespace Team.Mango.Bank_Application
 
             int tries = 0;
             bool Granted = true;
-            Users CurrentUser;
+            
+            ;
 
             do
             {
