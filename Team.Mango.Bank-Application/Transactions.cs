@@ -4,7 +4,18 @@ using System.Text;
 
 namespace Team.Mango.Bank_Application
 {
-    internal class Transactions
+    public class Transactions
     {
+        public double Amount { get; set; }
+        public string accFrom { get; set; }
+        public string accTo { get; set; }
+
+        public Transactions(double Amount, string accFrom, string accTo)
+        {
+            this.Amount = Amount;
+            this.accFrom = accFrom;
+            this.accTo = accTo;
+        }
+       
     }
 }

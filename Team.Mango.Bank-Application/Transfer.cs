@@ -67,6 +67,7 @@ namespace Team.Mango.Bank_Application
             //iTloop = "internal transfer loop"
             bool iTloop1 = true;
             bool iTloop2 = true;
+            bool iTCal = true;
             int maxAccNum = CurrentUserAccounts.Count;
 
             while (iTloop1)
@@ -150,11 +151,14 @@ namespace Team.Mango.Bank_Application
                     Console.WriteLine("Just numbers !!!!!");
                 }
 
-
-
-
-
             }
+
+            // Transfering process 
+
+
+
+
+
         }
     }
 }
