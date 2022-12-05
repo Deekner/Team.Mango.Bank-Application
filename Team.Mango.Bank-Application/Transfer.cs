@@ -5,7 +5,7 @@ namespace Team.Mango.Bank_Application
 {
     internal class Transfer
     {
-        public int accfrom = 0;
+        public int accFrom = 0;
         public int accTo = 0;
         public double transferAmmount = 0;
 
@@ -84,8 +84,8 @@ namespace Team.Mango.Bank_Application
 
 
                 // Choose account that you want to transferform
-                accfrom = int.Parse(Console.ReadLine());
-                if (accfrom <= maxAccNum && accfrom > 0)
+                accFrom = int.Parse(Console.ReadLine());
+                if (accFrom <= maxAccNum && accFrom > 0)
                 {
                     iTloop1 = false;
                 }
@@ -113,7 +113,7 @@ namespace Team.Mango.Bank_Application
                 try
                 {
                     accTo = int.Parse(Console.ReadLine());
-                    if (accTo <= maxAccNum && accTo != accfrom && accTo > 0)
+                    if (accTo <= maxAccNum && accTo != accFrom && accTo > 0)
                     {
                         iTloop2 = false;
 
@@ -126,16 +126,16 @@ namespace Team.Mango.Bank_Application
                     Console.WriteLine("Please input the account number with a number/numbers");
                 }
 
-            
 
-            //Selecting ammount
-            
+
+                //Selecting ammount
+
                 Console.Clear();
                 Console.WriteLine("Select the ammount.");
                 try
                 {
                     transferAmmount = double.Parse(Console.ReadLine());
-                    if(transferAmmount > 0 )
+                    if (transferAmmount > 0)
                     {
                         iTloop2 = false;
                     }
@@ -145,7 +145,7 @@ namespace Team.Mango.Bank_Application
                         Console.ReadKey();
                     }
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     Console.Clear();
                     Console.WriteLine("Just numbers !!!!!");
@@ -153,12 +153,27 @@ namespace Team.Mango.Bank_Application
 
             }
 
-            // Transfering process 
+            // Transfering process
+            // Minus 1 is because account start from 0 
+            accFrom = accFrom - 1;
+            accTo = accTo - 1;
+            bool TSuccess = false;
+            //CurrentUserAccounts[] is a way to access index of CurrentUsers Bankaccount 
+            if (CurrentUserAccounts[accFrom].Balance >= transferAmmount)
+            {
+                CurrentUserAccounts[accFrom].Balance -= transferAmmount;
+                CurrentUserAccounts[accTo].Balance += transferAmmount;
+                TSuccess = true;
+             
+            }
 
+            if(TSuccess == true)
+            {
+                Console.WriteLine("You transfered {0} from account {1} to accout {2}",transferAmmount, accFrom + 1, accTo + 1);
+                Console.WriteLine("Account number {0} balance is now {1}\nAccount number {2} balance is now {3}", accFrom + 1, CurrentUserAccounts[accFrom].Balance, accTo + 1,CurrentUserAccounts[accTo].Balance);
+                Console.ReadKey();
 
-
-
-
+            }
         }
     }
 }

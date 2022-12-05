@@ -89,8 +89,8 @@ namespace Team.Mango.Bank_Application
                 Count++;
             }
             Console.ReadKey();
-            Login SendBack = new Login();
-            SendBack.AdminMenu(Users, CurrentUser);
+            AdminMenu SendBack = new AdminMenu();
+            SendBack.adminMenu(Users, CurrentUser);
         }
 
         public void ShowAccountInfo(User CurrentUser)

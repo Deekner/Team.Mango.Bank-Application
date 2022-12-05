@@ -15,10 +15,17 @@ namespace Team.Mango.Bank_Application
             List<User> Users = new List<User>();
 
 
-            
+            //Create Admin
+            List<BankAccount> AM = new List<BankAccount>();
+            BankAccount AdminBAccount = new BankAccount("No money", 0000);
+            User Admin = new User("admin", "admin", "Tony", "Stark", "2129704133", AM, true);
+            Admin.BankAccountList.Add(AdminBAccount);
+            Users.Add(Admin);
+
+
 
             //User 1
-            
+
             //Making a list of Tim Bankaccount "BA1"
             List<BankAccount> TA1 = new List<BankAccount>();
             //Create default bankaccount
@@ -71,12 +78,7 @@ namespace Team.Mango.Bank_Application
             Users.Add(User4);
 
 
-            //Admin
-            List<BankAccount> AM= new List<BankAccount>();
-            BankAccount AdminBAccount = new BankAccount("No money", 0000);
-            User Admin = new User("admin", "admin", "Tony", "Stark", "2129704133", AM, true);
-            Admin.BankAccountList.Add(AdminBAccount);
-            Users.Add(Admin);
+          
 
 
             //Create object of Login
