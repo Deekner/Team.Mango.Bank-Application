@@ -41,5 +41,21 @@ namespace Team.Mango.Bank_Application
                 A++;
             }
         }
+        public static void OpenBankAccount(User CurrentUser)
+        {
+
+            Console.Clear();
+            Console.WriteLine("-------- Open Bank account --------\n");
+
+            Console.Write("Account name: ");
+            string accountName = Console.ReadLine();
+            Console.Write("Deposit Amount: ");
+            double amount = double.Parse(Console.ReadLine());
+
+            List<BankAccount> NewBankAcc = CurrentUser.BankAccountList;
+            BankAccount BankAccInfo = new BankAccount(accountName, amount);
+            NewBankAcc.Add(BankAccInfo);
+
+        }
     }
 }
