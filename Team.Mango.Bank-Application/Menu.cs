@@ -16,7 +16,7 @@ namespace Team.Mango.Bank_Application
                 Console.WriteLine("--------------------------------------");
                 Console.WriteLine("|    [1.]  Accounts                  | ");
                 Console.WriteLine("|    [2.]  Transfer                  | ");
-                Console.WriteLine("|    [3.]  Withdraw                  | ");
+                Console.WriteLine("|    [3.]  Open New Bank Account     | ");
                 Console.WriteLine("|    [4.]  Logout                    | ");
                 Console.WriteLine("|    [5.]  Exit application          | ");
                 Console.WriteLine("--------------------------------------");
@@ -38,7 +38,7 @@ namespace Team.Mango.Bank_Application
                             break;
 
                         case 3:
-                            Withdraw.withdraw();
+                            BankAccount.OpenBankAccount(CurrentUser);
                             break;
 
                         case 4:
