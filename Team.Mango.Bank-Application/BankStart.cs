@@ -59,7 +59,7 @@ namespace Team.Mango.Bank_Application
 
             //User 3
             List<BankAccount> DA3 = new List<BankAccount>();
-            BankAccount DAccount1 = new BankAccount("Private account", 200680);
+            BankAccount DAccount1 = new BankAccount("Private account", 200);
             BankAccount DAccount2 = new BankAccount("Private account", 20230000);
             User User3 = new User("Dennis", "3333", "Dennis", "Ekner", "070427245", DA3, false);
             User3.BankAccountList.Add(DAccount1);

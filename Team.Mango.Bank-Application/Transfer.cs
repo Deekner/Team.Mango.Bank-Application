@@ -8,7 +8,8 @@ namespace Team.Mango.Bank_Application
         public int accFrom = 0;
         public int accTo = 0;
         public double transferAmmount = 0;
-
+        // Who to transfer to
+        public string transferTo = "";
 
 
 
@@ -39,7 +40,7 @@ namespace Team.Mango.Bank_Application
                             break;
 
                         case 2:
-
+                            UserToUserTransfer(CurrentUserAccounts, CurrentUser, Users);
                             break;
 
                         case 3:
@@ -67,7 +68,7 @@ namespace Team.Mango.Bank_Application
             //iTloop = "internal transfer loop"
             bool iTloop1 = true;
             bool iTloop2 = true;
-            bool iTCal = true;
+            
             int maxAccNum = CurrentUserAccounts.Count;
 
             while (iTloop1)
@@ -91,7 +92,7 @@ namespace Team.Mango.Bank_Application
                 }
                 else
                 {
-                    Console.WriteLine("Please enter an existing account \nPress enter to continue.");
+                    Console.WriteLine("Please select an existing account \nPress enter to continue.");
                     Console.ReadKey();
                 }
 
@@ -123,7 +124,7 @@ namespace Team.Mango.Bank_Application
                 catch (Exception)
                 {
                     Console.Clear();
-                    Console.WriteLine("Please input the account number with a number/numbers");
+                    Console.WriteLine("Please select an existing account");
                 }
 
 
@@ -175,5 +176,149 @@ namespace Team.Mango.Bank_Application
 
             }
         }
+
+        public void UserToUserTransfer(List<BankAccount> CurrentUserAccounts, User CurrentUser, List<User> Users)
+        {
+            Console.Clear();
+            // Maximum account that the user owns
+            int maxAccNum = CurrentUserAccounts.Count;
+            // Account start with num else it will start at 0
+            int AccNum = 1;
+            
+
+            bool Tloop1 = true;
+            bool Tloop2 = true;
+            bool Tloop3 = true;
+            
+
+            //Tloop 1
+            // select from which account
+            while (Tloop1)
+            {
+                Console.WriteLine("Select the account that you want to transfer from.");
+                foreach (BankAccount item in CurrentUser.BankAccountList)
+                {
+                    Console.WriteLine(AccNum + $": Account name: {item.AccountName} Balance: {item.Balance} ");
+                    AccNum++;
+                }
+
+                try
+                {
+                    // Choose account that you want to transferform
+                    accFrom = int.Parse(Console.ReadLine());
+                    accFrom = accFrom - 1;
+                    if (accFrom <= maxAccNum && accFrom > 0)
+                    {
+                        Tloop1 = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select an existing account \nPress enter to continue.");
+                        Console.ReadKey();
+                    }
+
+                }catch(Exception)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please select existing account");
+                }
+            }
+
+            //Tloop 2
+            // Typing\Search user to transfer to by string
+            while (Tloop2)
+            {
+                Console.Clear();
+                Console.WriteLine("Write the username of the user you want to transfer to");
+               
+                try
+                {   
+                    // Make user search for User by text
+                    transferTo = Console.ReadLine();
+                    User transferToUser = Users.Find(F => F.Username == transferTo);
+
+                    if(transferTo == transferToUser.Username)
+                    {
+                        //Close loop if successfully found username 
+                        Console.WriteLine("{0} is found",transferTo);
+                        Console.ReadKey();
+                        Tloop2 = false;
+                        
+                    }
+                    else if(transferTo != transferToUser.Username)
+                    {
+                        Console.WriteLine("User not found");
+                        Tloop2 = true;
+                    }
+
+                   
+
+                }
+                catch(Exception)
+                {
+                    Console.WriteLine("User not found");
+                }
+               
+
+            }
+            //Tloop3 Select ammount
+            while(Tloop3)
+            {
+                Console.Clear();
+                Console.WriteLine("Select the ammount that you want to transfer");
+                try
+                {
+                    transferAmmount = double.Parse(Console.ReadLine());
+                    if(transferAmmount > 0)
+                    {
+                        Tloop3 = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You can not transfer less then 0 \nPress enter to try again");
+                        Console.ReadKey();
+                    }
+
+                }
+                catch(Exception)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Input only numbers");
+                    Console.WriteLine("Press any key to try again");
+                    Console.ReadLine();
+                }
+
+            }
+
+            Console.Clear();
+
+
+            bool success = true;
+            User transferToUser1 = Users.Find(f => f.Username == transferTo);
+            List<BankAccount> accName = transferToUser1.BankAccountList.FindAll(BA => BA.Balance > 0);
+            BankAccount name = accName.Find(BA => BA.Balance > 0);
+            
+            while (success)
+            {
+                
+                if (CurrentUserAccounts[accFrom].Balance >= transferAmmount)
+                {
+                    //CurrentUsers account
+                    CurrentUserAccounts[accFrom].Balance -= transferAmmount;
+                    //User to transfer to acocunt
+                    accName[0].Balance += transferAmmount;
+                    success = false;
+                }
+            }
+            if (success == false)
+            {
+                // Transfer success
+                Console.WriteLine("Successfully transfered {0} to {1} : {2}", transferAmmount, transferTo, name.AccountName);
+                Console.WriteLine("Press enter to go back");
+                Console.ReadKey();
+            }
+
+        }
+
     }
 }
