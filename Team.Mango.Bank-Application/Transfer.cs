@@ -295,7 +295,7 @@ namespace Team.Mango.Bank_Application
 
             bool success = true;
             User transferToUser1 = Users.Find(f => f.Username == transferTo);
-            List<BankAccount> accName = transferToUser1.BankAccountList.FindAll(BA => BA.Balance > 0);
+            List<BankAccount> accName = transferToUser1.BankAccountList.FindAll(BA => BA.Balance >= 0);
             BankAccount name = accName.Find(BA => BA.Balance > 0);
             
             while (success)
@@ -313,7 +313,7 @@ namespace Team.Mango.Bank_Application
             if (success == false)
             {
                 // Transfer success
-                Console.WriteLine("Successfully transfered {0} to {1} : {2}", transferAmmount, transferTo, name.AccountName);
+                Console.WriteLine("Successfully transfered {0} to {1}", transferAmmount, transferTo);
                 Console.WriteLine("Press enter to go back");
                 Console.ReadKey();
             }

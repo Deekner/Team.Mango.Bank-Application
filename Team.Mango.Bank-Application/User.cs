@@ -162,7 +162,8 @@ namespace Team.Mango.Bank_Application
                 newUser.BankAccountList.Add(newAcc);
                 Users.Add(newUser);
 
-
+                Console.WriteLine("Successfully created a new user named {0}",newUser.Username);
+                
 
 
 
