@@ -62,6 +62,7 @@ namespace Team.Mango.Bank_Application
                 }
                 else
                 {
+                    Console.Clear();
                     LoginGranted = false;
                     Console.WriteLine("Invilid Username or Password! you have " + Attempt + " attempts left");
                     Attempt--;
