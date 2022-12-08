@@ -6,6 +6,12 @@ namespace Team.Mango.Bank_Application
 {
     public class AdminMenu
     {
+        public double _currEuro;
+        public double _currUSD;
+
+        
+        
+
         //ADMIN Menu
         public void adminMenu(List<User> Users, User CurrentUser)
         {
