@@ -41,20 +41,78 @@ namespace Team.Mango.Bank_Application
                 A++;
             }
         }
-        public static void OpenBankAccount(User CurrentUser)
+        public static void OpenBankAccount(List<User> Users, User CurrentUser)
         {
 
             Console.Clear();
             Console.WriteLine("-------- Open Bank account --------\n");
+            do
+            {
+                Console.WriteLine("What type of account would like to open?\n");
+                Console.WriteLine("[ 1. ] Checking Account\n[ 2. ] Savings Account\n[ 3. ] Return to Main Menu\n");
+                float Userinput = float.Parse(Console.ReadLine());
 
+                try
+                {
+                    switch (Userinput)
+                    {
+                        case 1:
+                            OpenCheckingAccount(Users, CurrentUser);
+                            break;
+
+                        case 2:
+                            OpenSavingAccount(Users, CurrentUser);
+                            break;
+
+                        default:
+                            Menu.MenuOptions(Users, CurrentUser);
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid Input!");
+                    Console.ReadLine();
+                }
+            } while (true);
+        }
+
+        public static void OpenCheckingAccount(List<User> Users, User CurrentUser)
+        {
+            Console.Clear();
+            Console.WriteLine("-------- Open Bank account --------\n");
             Console.Write("Account name: ");
             string accountName = Console.ReadLine();
+
             Console.Write("Deposit Amount: ");
             double amount = double.Parse(Console.ReadLine());
 
             List<BankAccount> NewBankAcc = CurrentUser.BankAccountList;
             BankAccount BankAccInfo = new BankAccount(accountName, amount);
             NewBankAcc.Add(BankAccInfo);
+            Menu.MenuOptions(Users, CurrentUser);
+
+        }
+
+        public static void OpenSavingAccount(List<User> Users, User CurrentUser)
+        {
+
+
+            Console.Clear();
+            Console.WriteLine("-------- Open Savings account --------\n");
+
+            Console.Write("Account name: ");
+            string accountName = Console.ReadLine();
+
+            Console.Write("Deposit Amount: ");
+            double amount = double.Parse(Console.ReadLine());
+
+            List<BankAccount> NewBankAcc = CurrentUser.BankAccountList;
+            BankAccount BankAccInfo = new BankAccount(accountName, amount);
+            NewBankAcc.Add(BankAccInfo);
+            Menu.MenuOptions(Users, CurrentUser);
+
+
 
         }
     }
