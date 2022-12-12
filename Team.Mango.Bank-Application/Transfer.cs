@@ -40,7 +40,7 @@ namespace Team.Mango.Bank_Application
                             break;
 
                         case 2:
-                            UserToUserTransfer(CurrentUserAccounts, CurrentUser, Users);
+                            UserToUserTransfer(CurrentUserAccounts, CurrentUser, Users,CurrRate);
                             break;
 
                         case 3:
@@ -79,7 +79,7 @@ namespace Team.Mango.Bank_Application
                 int AccNum = 1;
                 foreach (BankAccount item in CurrentUser.BankAccountList)
                 {
-                    Console.WriteLine(AccNum + $": Account name: {item.AccountName} Balance: {item.Balance} ");
+                    Console.WriteLine(AccNum + $": Account name: {item.AccountName} Balance: {item.Balance} {item.CurrencyType}");
                     AccNum++;
                 }
 
@@ -107,7 +107,7 @@ namespace Team.Mango.Bank_Application
                 int AccNum = 1;
                 foreach (BankAccount item in CurrentUser.BankAccountList)
                 {
-                    Console.WriteLine(AccNum + $": Account name: {item.AccountName} Balance: {item.Balance} ");
+                    Console.WriteLine(AccNum + $": Account name: {item.AccountName} Balance: {item.Balance} {item.CurrencyType}");
                     AccNum++;
                 }
 
@@ -160,24 +160,47 @@ namespace Team.Mango.Bank_Application
             accTo = accTo - 1;
             bool TSuccess = false;
             //CurrentUserAccounts[] is a way to access index of CurrentUsers Bankaccount 
-            if (CurrentUserAccounts[accFrom].Balance >= transferAmmount)
+
+            if (CurrentUserAccounts[accFrom].CurrencyType == "USD" && CurrentUserAccounts[accFrom].Balance >= transferAmmount && CurrentUserAccounts[accTo].CurrencyType == "SEK")
+            {
+                Console.WriteLine("USD rate is {0} ", Math.Round(CurrRate._currencyRate, 2));
+                CurrentUserAccounts[accFrom].Balance -= transferAmmount;
+                CurrentUserAccounts[accTo].Balance += transferAmmount * CurrRate._currencyRate;
+                Console.WriteLine("You have transfered {0} {1} from account {2} to accout {3}", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, accFrom + 1, accTo + 1);
+                Console.WriteLine(" {0} {1} => {2} {3} ", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, transferAmmount * CurrRate._currencyRate, CurrentUserAccounts[accTo].CurrencyType);
+                Console.ReadKey();
+                TSuccess = true;
+            }
+            if (CurrentUserAccounts[accFrom].CurrencyType == "SEK" && CurrentUserAccounts[accFrom].Balance >= transferAmmount && CurrentUserAccounts[accTo].CurrencyType == "USD")
+            {
+                Console.WriteLine("USD rate is {0}", Math.Round(CurrRate._currencyRate, 2));
+                CurrentUserAccounts[accFrom].Balance -= transferAmmount;
+                CurrentUserAccounts[accTo].Balance += transferAmmount / CurrRate._currencyRate;
+                Console.WriteLine("You have transfered {0} {1} from account {2} to accout {3}", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, accFrom + 1, accTo + 1);
+                Console.WriteLine(" {0} {1} => {2} {3} ", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, transferAmmount / CurrRate._currencyRate, CurrentUserAccounts[accTo].CurrencyType);
+                Console.ReadKey();
+                TSuccess = true;
+            }
+
+            if (CurrentUserAccounts[accFrom].CurrencyType == "SEK" && CurrentUserAccounts[accTo].CurrencyType == "SEK" && CurrentUserAccounts[accFrom].Balance >= transferAmmount)
             {
                 CurrentUserAccounts[accFrom].Balance -= transferAmmount;
                 CurrentUserAccounts[accTo].Balance += transferAmmount;
                 TSuccess = true;
-             
+
             }
 
-            if(TSuccess == true)
+
+            if (TSuccess == true)
             {
-                Console.WriteLine("You transfered {0} from account {1} to accout {2}",transferAmmount, accFrom + 1, accTo + 1);
-                Console.WriteLine("Account number {0} balance is now {1}\nAccount number {2} balance is now {3}", accFrom + 1, CurrentUserAccounts[accFrom].Balance, accTo + 1,CurrentUserAccounts[accTo].Balance);
+                Console.Clear();
+                Console.WriteLine("Account number {0} balance is now {1} {2}\nAccount number {3} balance is now {4} {5}", accFrom + 1, CurrentUserAccounts[accFrom].Balance, CurrentUserAccounts[accFrom].CurrencyType, accTo + 1, CurrentUserAccounts[accTo].Balance, CurrentUserAccounts[accTo].CurrencyType);
                 Console.ReadKey();
 
             }
         }
 
-        public void UserToUserTransfer(List<BankAccount> CurrentUserAccounts, User CurrentUser, List<User> Users)
+        public void UserToUserTransfer(List<BankAccount> CurrentUserAccounts, User CurrentUser, List<User> Users, CurrencyRates CurrRate)
         {
             Console.Clear();
             // Maximum account that the user owns
@@ -198,7 +221,7 @@ namespace Team.Mango.Bank_Application
                 Console.WriteLine("Select the account that you want to transfer from.");
                 foreach (BankAccount item in CurrentUser.BankAccountList)
                 {
-                    Console.WriteLine(AccNum + $": Account name: {item.AccountName} Balance: {item.Balance} ");
+                    Console.WriteLine(AccNum + $": Account name: {item.AccountName} Balance: {item.Balance} {item.CurrencyType}");
                     AccNum++;
                 }
 
@@ -271,6 +294,7 @@ namespace Team.Mango.Bank_Application
                     transferAmmount = double.Parse(Console.ReadLine());
                     if(transferAmmount > 0)
                     {
+                       
                         Tloop3 = false;
                     }
                     else
@@ -300,20 +324,36 @@ namespace Team.Mango.Bank_Application
             
             while (success)
             {
-                
-                if (CurrentUserAccounts[accFrom].Balance >= transferAmmount)
+
+
+                if (CurrentUserAccounts[accFrom].CurrencyType == "USD" && CurrentUserAccounts[accFrom].Balance >= transferAmmount && CurrentUserAccounts[accTo].CurrencyType == "SEK")
+                {
+                    Console.WriteLine("USD rate is {0} ", Math.Round(CurrRate._currencyRate, 2));
+                    CurrentUserAccounts[accFrom].Balance -= transferAmmount;
+                    accName[0].Balance += transferAmmount * CurrRate._currencyRate;
+                    Console.WriteLine("You have transfered {0} {1} from account {2} to {3}", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, accFrom + 1, transferTo);
+                    Console.WriteLine(" {0} {1} => {2} {3} ", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, transferAmmount * CurrRate._currencyRate, accName[0].CurrencyType);
+                    success = false;
+                   
+                    
+                }
+
+
+                if (CurrentUserAccounts[accFrom].CurrencyType == "SEK" && CurrentUserAccounts[accFrom].Balance >= transferAmmount && accName[0].CurrencyType == "SEK")
                 {
                     //CurrentUsers account
                     CurrentUserAccounts[accFrom].Balance -= transferAmmount;
                     //User to transfer to acocunt
                     accName[0].Balance += transferAmmount;
+                    Console.WriteLine("You have transfered {0} {1} from account {2} to {3}", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, accFrom + 1, transferTo);
+                    
                     success = false;
                 }
             }
             if (success == false)
             {
                 // Transfer success
-                Console.WriteLine("Successfully transfered {0} to {1}", transferAmmount, transferTo);
+                
                 Console.WriteLine("Press enter to go back");
                 Console.ReadKey();
             }
