@@ -40,7 +40,7 @@ namespace Team.Mango.Bank_Application
                             break;
 
                         case 2:
-                            UserToUserTransfer(CurrentUserAccounts, CurrentUser, Users,CurrRate);
+                            UserToUserTransfer(CurrentUserAccounts, CurrentUser, Users, CurrRate);
                             break;
 
                         case 3:
@@ -68,7 +68,7 @@ namespace Team.Mango.Bank_Application
             //iTloop = "internal transfer loop"
             bool iTloop1 = true;
             bool iTloop2 = true;
-            
+
             int maxAccNum = CurrentUserAccounts.Count;
 
             while (iTloop1)
@@ -207,12 +207,12 @@ namespace Team.Mango.Bank_Application
             int maxAccNum = CurrentUserAccounts.Count;
             // Account start with num else it will start at 0
             int AccNum = 1;
-            
+
 
             bool Tloop1 = true;
             bool Tloop2 = true;
             bool Tloop3 = true;
-            
+
 
             //Tloop 1
             // select from which account
@@ -230,7 +230,7 @@ namespace Team.Mango.Bank_Application
                     // Choose account that you want to transferform
                     accFrom = int.Parse(Console.ReadLine());
                     accFrom = accFrom - 1;
-                    if (accFrom <= maxAccNum && accFrom > 0)
+                    if (accFrom <= maxAccNum && accFrom >= 0)
                     {
                         Tloop1 = false;
                     }
@@ -240,7 +240,8 @@ namespace Team.Mango.Bank_Application
                         Console.ReadKey();
                     }
 
-                }catch(Exception)
+                }
+                catch (Exception)
                 {
                     Console.Clear();
                     Console.WriteLine("Please select existing account");
@@ -253,48 +254,48 @@ namespace Team.Mango.Bank_Application
             {
                 Console.Clear();
                 Console.WriteLine("Write the username of the user you want to transfer to");
-               
+
                 try
-                {   
+                {
                     // Make user search for User by text
                     transferTo = Console.ReadLine();
                     User transferToUser = Users.Find(F => F.Username == transferTo);
 
-                    if(transferTo == transferToUser.Username)
+                    if (transferTo == transferToUser.Username)
                     {
                         //Close loop if successfully found username 
-                        Console.WriteLine("{0} is found",transferTo);
+                        Console.WriteLine("{0} is found", transferTo);
                         Console.ReadKey();
                         Tloop2 = false;
-                        
+
                     }
-                    else if(transferTo != transferToUser.Username)
+                    else if (transferTo != transferToUser.Username)
                     {
                         Console.WriteLine("User not found");
                         Tloop2 = true;
                     }
 
-                   
+
 
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     Console.WriteLine("User not found");
                 }
-               
+
 
             }
             //Tloop3 Select ammount
-            while(Tloop3)
+            while (Tloop3)
             {
                 Console.Clear();
                 Console.WriteLine("Select the ammount that you want to transfer");
                 try
                 {
                     transferAmmount = double.Parse(Console.ReadLine());
-                    if(transferAmmount > 0)
+                    if (transferAmmount > 0)
                     {
-                       
+
                         Tloop3 = false;
                     }
                     else
@@ -304,7 +305,7 @@ namespace Team.Mango.Bank_Application
                     }
 
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     Console.Clear();
                     Console.WriteLine("Input only numbers");
@@ -321,7 +322,7 @@ namespace Team.Mango.Bank_Application
             User transferToUser1 = Users.Find(f => f.Username == transferTo);
             List<BankAccount> accName = transferToUser1.BankAccountList.FindAll(BA => BA.Balance >= 0);
             BankAccount name = accName.Find(BA => BA.Balance > 0);
-            
+
             while (success)
             {
 
@@ -334,26 +335,24 @@ namespace Team.Mango.Bank_Application
                     Console.WriteLine("You have transfered {0} {1} from account {2} to {3}", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, accFrom + 1, transferTo);
                     Console.WriteLine(" {0} {1} => {2} {3} ", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, transferAmmount * CurrRate._currencyRate, accName[0].CurrencyType);
                     success = false;
-                   
-                    
+
+
                 }
-
-
-                if (CurrentUserAccounts[accFrom].CurrencyType == "SEK" && CurrentUserAccounts[accFrom].Balance >= transferAmmount && accName[0].CurrencyType == "SEK")
+                else
                 {
                     //CurrentUsers account
                     CurrentUserAccounts[accFrom].Balance -= transferAmmount;
                     //User to transfer to acocunt
                     accName[0].Balance += transferAmmount;
-                    Console.WriteLine("You have transfered {0} {1} from account {2} to {3}", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, accFrom + 1, transferTo);
-                    
+                    Console.WriteLine("You have transfered {0} {1} from account name: {2} to {3}", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, CurrentUserAccounts[accFrom].AccountName, transferTo);
+
                     success = false;
                 }
             }
             if (success == false)
             {
                 // Transfer success
-                
+
                 Console.WriteLine("Press enter to go back");
                 Console.ReadKey();
             }
