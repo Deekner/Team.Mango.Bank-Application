@@ -7,6 +7,7 @@ namespace Team.Mango.Bank_Application
         static void Main(string[] args)
         {
 
+
             //Create object of BankStart to run BankRun function
             BankStart runbank = new BankStart();
             runbank.RunBank();

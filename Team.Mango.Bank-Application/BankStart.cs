@@ -15,23 +15,32 @@ namespace Team.Mango.Bank_Application
             List<User> Users = new List<User>();
 
 
+            //Create currency
+            List<CurrencyRates> Rates = new List<CurrencyRates>();
+            CurrencyRates USDRates = new CurrencyRates("USD", 10.33);
+            CurrencyRates SEKRates = new CurrencyRates("SEK", 0);
+            Rates.Add(USDRates);
+            Rates.Add(SEKRates);
+
+
+
+
             //Create Admin
             List<BankAccount> AM = new List<BankAccount>();
-            BankAccount AdminBAccount = new BankAccount("No money", 0000);
-            User Admin = new User("admin", "admin", "Tony", "Stark", "2129704133", AM, true);
+            BankAccount AdminBAccount = new BankAccount("No money", 0000, "SEK");
+            User Admin = new User("admin", "admin", "Tony", "Stark", "2129704133", AM, true);     
             Admin.BankAccountList.Add(AdminBAccount);
             Users.Add(Admin);
 
 
 
             //User 1
-
             //Making a list of Tim Bankaccount "BA1"
             List<BankAccount> TA1 = new List<BankAccount>();
             //Create default bankaccount
-            BankAccount TAccount1 = new BankAccount("Private account", 25000);
-            BankAccount TAccount2 = new BankAccount("Private account", 500);
-            BankAccount TAccount3 = new BankAccount("Private account", 4989056456897);
+            BankAccount TAccount1 = new BankAccount("Private account", 25000, "SEK");
+            BankAccount TAccount2 = new BankAccount("Private account", 500, "USD");
+            BankAccount TAccount3 = new BankAccount("Private account", 4989056456897,"SEK");
 
 
             //Create User
@@ -48,9 +57,9 @@ namespace Team.Mango.Bank_Application
 
             //User 2
             List<BankAccount> EA2 = new List<BankAccount>();
-            BankAccount EAccount1= new BankAccount("Private account", 2000);
-            BankAccount EAccount2 = new BankAccount("Private account", 2500);
-            BankAccount EAccount3 = new BankAccount("Private account", 497);
+            BankAccount EAccount1= new BankAccount("Private account", 2000, "SEK");
+            BankAccount EAccount2 = new BankAccount("Private account", 2500, "USD");
+            BankAccount EAccount3 = new BankAccount("Private account", 497, "SEK");
             User User2= new User("Elin", "2222", "Elin", "Linderholm", "0708687334", EA2, false);
             User2.BankAccountList.Add(EAccount1);
             User2.BankAccountList.Add(EAccount2);
@@ -60,8 +69,8 @@ namespace Team.Mango.Bank_Application
 
             //User 3
             List<BankAccount> DA3 = new List<BankAccount>();
-            BankAccount DAccount1 = new BankAccount("Private account", 200);
-            BankAccount DAccount2 = new BankAccount("Private account", 20230000);
+            BankAccount DAccount1 = new BankAccount("Private account", 200, "USD");
+            BankAccount DAccount2 = new BankAccount("Private account", 20230000, "SEK");
             User User3 = new User("Dennis", "3333", "Dennis", "Ekner", "070427245", DA3, false);
             User3.BankAccountList.Add(DAccount1);
             User3.BankAccountList.Add(DAccount2);
@@ -71,8 +80,8 @@ namespace Team.Mango.Bank_Application
 
             //User 4
             List<BankAccount> AA4 = new List<BankAccount>();
-            BankAccount AAccount1 = new BankAccount("Private account", 250);
-            BankAccount AAccount2 = new BankAccount("Private account", 2600);
+            BankAccount AAccount1 = new BankAccount("Private account", 250, "USD");
+            BankAccount AAccount2 = new BankAccount("Private account", 2600, "SEK");
             User User4 = new User("Anton", "4444", "Anton", "Johansson", "0708687334", AA4, false);
             User4.BankAccountList.Add(AAccount1);
             User4.BankAccountList.Add(AAccount2);
@@ -85,7 +94,7 @@ namespace Team.Mango.Bank_Application
             //Create object of Login
             Login login = new Login();
             //Send Users list data to UserLogin() 
-            login.UserLogin(Users);
+            login.UserLogin(Users,USDRates);
 
 
             

@@ -6,8 +6,8 @@ namespace Team.Mango.Bank_Application
 {
     public class Menu 
     {
-
-        public static void MenuOptions(List<User> Users, User CurrentUser)
+        
+        public static void MenuOptions(List<User> Users, User CurrentUser, CurrencyRates CurrRate)
         {
             do
             {
@@ -34,7 +34,7 @@ namespace Team.Mango.Bank_Application
 
                         case 2:
                             Transfer transfer = new Transfer();
-                            transfer.transferMenu(CurrentUser.BankAccountList, CurrentUser, Users);
+                            transfer.transferMenu(CurrentUser.BankAccountList, CurrentUser, Users, CurrRate);
                             break;
 
                         case 3:
@@ -43,7 +43,7 @@ namespace Team.Mango.Bank_Application
 
                         case 4:
                             Login logout = new Login();
-                            logout.UserLogin(Users);
+                            logout.UserLogin(Users, CurrRate);
                             break;
 
                         default:

@@ -79,7 +79,7 @@ namespace Team.Mango.Bank_Application
         }
 
        
-        public void ShowAllUsers(List<User> Users, User CurrentUser)
+        public void ShowAllUsers(List<User> Users, User CurrentUser, CurrencyRates CurrRate)
         {
             Console.Clear();
             int Count = 1;
@@ -90,7 +90,7 @@ namespace Team.Mango.Bank_Application
             }
             Console.ReadKey();
             AdminMenu SendBack = new AdminMenu();
-            SendBack.adminMenu(Users, CurrentUser);
+            SendBack.adminMenu(Users, CurrentUser, CurrRate);
         }
 
         public void ShowAccountInfo(User CurrentUser)
@@ -157,7 +157,7 @@ namespace Team.Mango.Bank_Application
                 bool notAdmin = false;
                 List<BankAccount> newBankAcc = new List<BankAccount>();
                 //List<PrivateAccount> newPrivateAccount = new List<PrivateAccount>();
-                BankAccount newAcc = new BankAccount("Private Account", 0);
+                BankAccount newAcc = new BankAccount("Private Account", 0, "SEK");
                 User newUser = new User(username, password, firstName, lastName, phoneNum, newBankAcc, notAdmin);
                 newUser.BankAccountList.Add(newAcc);
                 Users.Add(newUser);
