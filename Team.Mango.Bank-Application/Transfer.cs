@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Team.Mango.Bank_Application
 {
@@ -21,12 +22,41 @@ namespace Team.Mango.Bank_Application
             do
             {
                 Console.Clear();
-                Console.WriteLine("             TRANSFER MENU             ");
-                Console.WriteLine("--------------------------------------");
-                Console.WriteLine("|    [1.]  Internal Transfers        | ");
-                Console.WriteLine("|    [2.]  Transfer to other user    | ");
-                Console.WriteLine("|    [3.]  Go back                   | ");
-                Console.WriteLine("--------------------------------------");
+                string Mmenu = "             TRANSFER MENU             ";
+                string Mlines = "--------------------------------------";
+                string MIT = "|    [1.]  Internal Transfers        | ";
+                string MTransfer = "|    [2.]  Transfer to other user    | ";
+                string MGoback = "|    [3.]  Go back                   | ";
+                string Mexit = "--------------------------------------";
+
+
+
+                Console.SetCursorPosition((Console.WindowWidth - Mmenu.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mmenu);
+                Console.SetCursorPosition((Console.WindowWidth - Mlines.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlines);
+                Console.SetCursorPosition((Console.WindowWidth - MIT.Length) / 2, Console.CursorTop);
+                Console.WriteLine(MIT);
+                Console.SetCursorPosition((Console.WindowWidth - MTransfer.Length) / 2, Console.CursorTop);
+                Console.WriteLine(MTransfer);
+                Console.SetCursorPosition((Console.WindowWidth - MGoback.Length) / 2, Console.CursorTop);
+                Console.WriteLine(MGoback);
+                Console.SetCursorPosition((Console.WindowWidth - Mexit.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mexit);
+
+
+
+
+
+
+
+                //Console.Clear();
+                //Console.WriteLine("             TRANSFER MENU             ");
+                //Console.WriteLine("--------------------------------------");
+                //Console.WriteLine("|    [1.]  Internal Transfers        | ");
+                //Console.WriteLine("|    [2.]  Transfer to other user    | ");
+                //Console.WriteLine("|    [3.]  Go back                   | ");
+                //Console.WriteLine("--------------------------------------");
 
 
                 try

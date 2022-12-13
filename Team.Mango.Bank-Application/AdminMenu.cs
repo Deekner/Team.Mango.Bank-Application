@@ -12,13 +12,42 @@ namespace Team.Mango.Bank_Application
             do
             {
                 Console.Clear();
-                Console.WriteLine("             MAIN MENU             ");
-                Console.WriteLine("--------------------------------------");
-                Console.WriteLine("|    [1.]  Show All Users            | ");
-                Console.WriteLine("|    [2.]  Create Account            | ");
-                Console.WriteLine("|    [3.]  Logout                    | ");
-                Console.WriteLine("|    [4.]  Exit application          | ");
-                Console.WriteLine("--------------------------------------");
+                string Mmenu = "             MAIN MENU             ";
+                string Mlines = "--------------------------------------";
+                string MUsers = "|    [1.]  Show All Users            | ";
+                string MCreateAccount = "|    [2.]  Create Account            | ";
+                string MLogout = "|    [3.]  Logout                    | ";
+                string Mexit = "|    [4.]  Exit application          | ";
+
+                Console.SetCursorPosition((Console.WindowWidth - Mmenu.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mmenu);
+                Console.SetCursorPosition((Console.WindowWidth - Mlines.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlines);
+                Console.SetCursorPosition((Console.WindowWidth - MUsers.Length) / 2, Console.CursorTop);
+                Console.WriteLine(MUsers);
+                Console.SetCursorPosition((Console.WindowWidth - MCreateAccount.Length) / 2, Console.CursorTop);
+                Console.WriteLine(MCreateAccount);               
+                Console.SetCursorPosition((Console.WindowWidth - MLogout.Length) / 2, Console.CursorTop);
+                Console.WriteLine(MLogout);
+                Console.SetCursorPosition((Console.WindowWidth - Mexit.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mexit);
+                Console.SetCursorPosition((Console.WindowWidth - Mlines.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlines);
+
+
+
+
+
+
+
+                //Console.Clear();
+                //Console.WriteLine("             MAIN MENU             ");
+                //Console.WriteLine("--------------------------------------");
+                //Console.WriteLine("|    [1.]  Show All Users            | ");
+                //Console.WriteLine("|    [2.]  Create Account            | ");
+                //Console.WriteLine("|    [3.]  Logout                    | ");
+                //Console.WriteLine("|    [4.]  Exit application          | ");
+                //Console.WriteLine("--------------------------------------");
 
 
                 try
@@ -53,7 +82,10 @@ namespace Team.Mango.Bank_Application
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Invalid Input!");
+                    string invalid = "Invalid Input!";
+                    Console.SetCursorPosition((Console.WindowWidth - invalid.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(invalid);
+                  
                     Console.ReadLine();
                 }
             } while (true);
