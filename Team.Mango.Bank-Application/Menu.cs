@@ -38,7 +38,7 @@ namespace Team.Mango.Bank_Application
                             break;
 
                         case 3:
-                            BankAccount.OpenBankAccount(CurrentUser);
+                            BankAccount.OpenBankAccount(Users, CurrentUser);
                             break;
 
                         case 4:
