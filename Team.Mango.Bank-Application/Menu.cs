@@ -87,9 +87,7 @@ namespace Team.Mango.Bank_Application
                 }
                 catch (FormatException)
                 {
-                    string II = "Invalid Input!";
-                    Console.SetCursorPosition((Console.WindowWidth - II.Length) / 2, Console.CursorTop);
-                    Console.WriteLine(II);
+                    Console.WriteLine("Invalid Input!");
                     Console.ReadLine();
                 }
             } while (true);
