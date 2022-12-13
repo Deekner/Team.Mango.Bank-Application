@@ -11,16 +11,43 @@ namespace Team.Mango.Bank_Application
         {
             do
             {
+                //Console.Clear();
+                //Console.WriteLine("             MAIN MENU             ");
+                //Console.WriteLine("--------------------------------------");
+                //Console.WriteLine("|    [1.]  Show All Users            | ");
+                //Console.WriteLine("|    [2.]  Create Account            | ");
+                //Console.WriteLine("|    [3.]  Update Current Rate:{0} | ", Math.Round(CurrRate._currencyRate, 2));
+                //Console.WriteLine("|    [4.]  Logout                    | ");
+                //Console.WriteLine("|    [5.]  Exit application          | ");
+                //Console.WriteLine("--------------------------------------");
+
                 Console.Clear();
-                Console.WriteLine("             MAIN MENU             ");
-                Console.WriteLine("--------------------------------------");
-                Console.WriteLine("|    [1.]  Show All Users            | ");
-                Console.WriteLine("|    [2.]  Create Account            | ");
-                Console.WriteLine("|    [3.]  Update Current Rate:{0} | ", Math.Round(CurrRate._currencyRate, 2));
-                Console.WriteLine("|    [4.]  Logout                    | ");
-                Console.WriteLine("|    [5.]  Exit application          | ");
-                Console.WriteLine("--------------------------------------");
-                
+                string Mmenu = "             MAIN MENU             ";
+                string Mlines = "--------------------------------------";
+                string Maccounts = "|    [1.]  Show All Users            | ";
+                string CreateA = "|    [2.]  Create Account            | ";
+                string UpdateCurr = "|    [3.]  Update Current Rate:    | ";
+                string Mlogout = "|    [4.]  Logout                    | ";
+                string Mexit = "|    [5.]  Exit application          | ";
+
+                Console.SetCursorPosition((Console.WindowWidth - Mmenu.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mmenu);
+                Console.SetCursorPosition((Console.WindowWidth - Mlines.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlines);
+                Console.SetCursorPosition((Console.WindowWidth - Maccounts.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Maccounts);
+                Console.SetCursorPosition((Console.WindowWidth - CreateA.Length) / 2, Console.CursorTop);
+                Console.WriteLine(CreateA);
+                Console.SetCursorPosition((Console.WindowWidth - UpdateCurr.Length) / 2, Console.CursorTop);
+                Console.WriteLine(UpdateCurr + Math.Round(CurrRate._currencyRate, 2));
+                Console.SetCursorPosition((Console.WindowWidth - Mlogout.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlogout);
+                Console.SetCursorPosition((Console.WindowWidth - Mexit.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mexit);
+                Console.SetCursorPosition((Console.WindowWidth - Mlines.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlines);
+
+
 
                 try
                 {

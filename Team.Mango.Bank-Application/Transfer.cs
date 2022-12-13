@@ -20,14 +20,38 @@ namespace Team.Mango.Bank_Application
 
             do
             {
-                Console.Clear();
-                Console.WriteLine("             TRANSFER MENU             ");
-                Console.WriteLine("--------------------------------------");
-                Console.WriteLine("|    [1.]  Internal Transfers        | ");
-                Console.WriteLine("|    [2.]  Transfer to other user    | ");
-                Console.WriteLine("|    [3.]  Go back                   | ");
-                Console.WriteLine("--------------------------------------");
+                //Console.Clear();
+                //Console.WriteLine("             TRANSFER MENU             ");
+                //Console.WriteLine("--------------------------------------");
+                //Console.WriteLine("|    [1.]  Internal Transfers        | ");
+                //Console.WriteLine("|    [2.]  Transfer to other user    | ");
+                //Console.WriteLine("|    [3.]  Go back                   | ");
+                //Console.WriteLine("--------------------------------------");
 
+
+
+                Console.Clear();
+                string Mmenu = "             TRANSFER MENU             ";
+                string Mlines = "--------------------------------------";
+                string MInTransfer = "|    [1.]  Internal Transfers        | ";
+                string Mtransferto = "|    [2.]  Transfer to other user    | ";
+                string MGoback = "|    [3.]  Go back                   | ";
+                
+
+                Console.SetCursorPosition((Console.WindowWidth - Mmenu.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mmenu);
+                Console.SetCursorPosition((Console.WindowWidth - Mlines.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlines);
+                Console.SetCursorPosition((Console.WindowWidth - MInTransfer.Length) / 2, Console.CursorTop);
+                Console.WriteLine(MInTransfer);
+              
+                Console.SetCursorPosition((Console.WindowWidth - Mtransferto.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mtransferto);
+                Console.SetCursorPosition((Console.WindowWidth - MGoback.Length) / 2, Console.CursorTop);
+                Console.WriteLine(MGoback);
+                Console.SetCursorPosition((Console.WindowWidth - Mlines.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlines);
+                
 
                 try
                 {

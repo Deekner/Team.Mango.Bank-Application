@@ -12,13 +12,19 @@ namespace Team.Mango.Bank_Application
         //UserLogin method gets data from BankStart List<User> Users
         public void UserLogin(List<User> Users, CurrencyRates CurrRate)
         {
+            string UP = "Please enter Username and Password";
+            string U = "Username: ";
+            string P = "Password: ";
             Console.Clear();
-            Console.WriteLine("Please enter Username and Password");
+            Console.SetCursorPosition((Console.WindowWidth - UP.Length) / 2, Console.CursorTop);
+            Console.WriteLine(UP);
             while (LoginGranted == false)
             {
-                Console.Write("Username: ");
+                Console.SetCursorPosition((Console.WindowWidth - U.Length) / 2, Console.CursorTop);
+                Console.Write(U);
                 string username = Console.ReadLine();
-                Console.Write("Password: ");
+                Console.SetCursorPosition((Console.WindowWidth - P.Length) / 2, Console.CursorTop);
+                Console.Write(P);
                 string password = Console.ReadLine();
 
                 //Check if username and password is matching with List<User> named Users
