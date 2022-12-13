@@ -12,14 +12,30 @@ namespace Team.Mango.Bank_Application
             do
             {
                 Console.Clear();
-                Console.WriteLine("             MAIN MENU             ");
-                Console.WriteLine("--------------------------------------");
-                Console.WriteLine("|    [1.]  Accounts                  | ");
-                Console.WriteLine("|    [2.]  Transfer                  | ");
-                Console.WriteLine("|    [3.]  Open New Bank Account     | ");
-                Console.WriteLine("|    [4.]  Logout                    | ");
-                Console.WriteLine("|    [5.]  Exit application          | ");
-                Console.WriteLine("--------------------------------------");
+                string Mmenu = "             MAIN MENU             ";
+                string Mlines = "--------------------------------------";
+                string Maccounts = "|    [1.]  Accounts                  | ";
+                string Mtransfer = "|    [2.]  Transfer                  | ";
+                string Mopenaccount = "|    [3.]  Open New Bank Account     | ";
+                string Mlogout = "|    [4.]  Logout                    | ";
+                string Mexit = "|    [5.]  Exit application          | ";
+
+                Console.SetCursorPosition((Console.WindowWidth - Mmenu.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mmenu);
+                Console.SetCursorPosition((Console.WindowWidth - Mlines.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlines);
+                Console.SetCursorPosition((Console.WindowWidth - Maccounts.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Maccounts);
+                Console.SetCursorPosition((Console.WindowWidth - Mtransfer.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mtransfer);
+                Console.SetCursorPosition((Console.WindowWidth - Mopenaccount.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mopenaccount);
+                Console.SetCursorPosition((Console.WindowWidth - Mlogout.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlogout);
+                Console.SetCursorPosition((Console.WindowWidth - Mexit.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mexit);
+                Console.SetCursorPosition((Console.WindowWidth - Mlines.Length) / 2, Console.CursorTop);
+                Console.WriteLine(Mlines);
 
 
                 try

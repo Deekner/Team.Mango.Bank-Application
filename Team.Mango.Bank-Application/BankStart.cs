@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace Team.Mango.Bank_Application
     {       // In here we will start the bankprogram
         public void RunBank()
         {
+            welcome();
             //Making a list of Users from User
             List<User> Users = new List<User>();
 
@@ -100,6 +102,216 @@ namespace Team.Mango.Bank_Application
             
 
 
+
+
+
+        }
+
+        public void welcome()
+        {
+
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            for (int i = 0; i < 100; i++)
+            {
+                Console.CursorVisible = false;
+                if (i > 0 && i < 10)
+                {
+
+                    string boot0 = "BOOTING:" + i + "%";
+                    string load0 = "[■         ]";
+                    Console.SetCursorPosition((Console.WindowWidth - boot0.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(boot0);
+                    Console.SetCursorPosition((Console.WindowWidth - load0.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(load0);
+                    Thread.Sleep(50);
+                    Console.SetCursorPosition(0, 0);
+                }
+                if (i > 20 && i < 30)
+                {
+
+                    string boot20 = "BOOTING:" + i + "%";
+                    string load20 = "[■■        ]";
+                    Console.SetCursorPosition((Console.WindowWidth - boot20.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(boot20);
+                    Console.SetCursorPosition((Console.WindowWidth - load20.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(load20);
+                    Thread.Sleep(60);
+                    Console.SetCursorPosition(0, 0);
+
+                }
+                if (i > 30 && i < 40)
+                {
+
+
+                    string boot30 = "BOOTING:" + i + "%";
+                    string load30 = "[■■■       ]";
+                    Console.SetCursorPosition((Console.WindowWidth - boot30.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(boot30);
+                    Console.SetCursorPosition((Console.WindowWidth - load30.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(load30);
+                    Thread.Sleep(70);
+                    Console.SetCursorPosition(0, 0);
+
+
+                }
+                if (i > 40 && i < 50)
+                {
+
+
+                    string boot40 = "BOOTING:" + i + "%";
+                    string load40 = "[■■■■      ]";
+                    Console.SetCursorPosition((Console.WindowWidth - boot40.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(boot40);
+                    Console.SetCursorPosition((Console.WindowWidth - load40.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(load40);
+                    Thread.Sleep(30);
+                    Console.SetCursorPosition(0, 0);
+                }
+                if (i > 50 && i < 60)
+                {
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    string boot50 = "BOOTING:" + i + "%";
+                    string load50 = "[■■■■■     ]";
+                    Console.SetCursorPosition((Console.WindowWidth - boot50.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(boot50);
+                    Console.SetCursorPosition((Console.WindowWidth - load50.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(load50);
+                    Thread.Sleep(70);
+                    Console.SetCursorPosition(0, 0);
+
+
+
+                }
+                if (i > 60 && i < 70)
+                {
+
+
+                    string boot60 = "BOOTING:" + i + "%";
+                    string load60 = "[■■■■■■    ]";
+                    Console.SetCursorPosition((Console.WindowWidth - boot60.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(boot60);
+                    Console.SetCursorPosition((Console.WindowWidth - load60.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(load60);
+                    Thread.Sleep(50);
+                    Console.SetCursorPosition(0, 0);
+
+                }
+                if (i > 70 && i < 80)
+                {
+
+
+                    string boot70 = "BOOTING:" + i + "%";
+                    string load70 = "[■■■■■■■   ]";
+                    Console.SetCursorPosition((Console.WindowWidth - boot70.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(boot70);
+                    Console.SetCursorPosition((Console.WindowWidth - load70.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(load70);
+                    Thread.Sleep(70);
+                    Console.SetCursorPosition(0, 0);
+
+                }
+                if (i > 80 && i < 90)
+                {
+
+
+
+                    string boot80 = "BOOTING:" + i + "%";
+                    string load80 = "[■■■■■■■■  ]";
+                    Console.SetCursorPosition((Console.WindowWidth - boot80.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(boot80);
+                    Console.SetCursorPosition((Console.WindowWidth - load80.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(load80);
+                    Thread.Sleep(80);
+                    Console.SetCursorPosition(0, 0);
+
+                }
+                if (i > 90 && i < 100)
+                {
+
+
+                    string boot90 = "BOOTING:" + i + "%";
+                    string load90 = "[■■■■■■■■■ ]";
+                    Console.SetCursorPosition((Console.WindowWidth - boot90.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(boot90);
+                    Console.SetCursorPosition((Console.WindowWidth - load90.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(load90);
+                    Thread.Sleep(80);
+                    Console.SetCursorPosition(0, 0);
+
+                }
+
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+            string boot100 = "COMPLETE:" + "100" + "%";
+            string load100 = "[■■■■■■■■■■]";
+            Console.SetCursorPosition((Console.WindowWidth - boot100.Length) / 2, Console.CursorTop);
+            Console.WriteLine(boot100);
+            Console.SetCursorPosition((Console.WindowWidth - load100.Length) / 2, Console.CursorTop);
+            Console.WriteLine(load100);
+            Thread.Sleep(1500);
+            Console.SetCursorPosition(0, 0);
+
+
+
+            static void ConsoleDraw(IEnumerable<string> lines, int x, int y)
+            {
+                Console.Clear();
+                if (x > Console.WindowWidth) return;
+                if (y > Console.WindowHeight) return;
+
+                var trimLeft = x < 0 ? -x : 0;
+                int index = y;
+
+                x = x < 0 ? 0 : x;
+                y = y < 0 ? 0 : y;
+
+                var linesToPrint =
+                    from line in lines
+                    let currentIndex = index++
+                    where currentIndex > 0 && currentIndex < Console.WindowHeight
+                    select new
+                    {
+                        Text = new String(line.Skip(trimLeft).Take(Math.Min(Console.WindowWidth - x, line.Length - trimLeft)).ToArray()),
+                        X = x,
+                        Y = y++
+                    };
+
+                Console.Clear();
+                foreach (var line in linesToPrint)
+                {
+                    Console.SetCursorPosition(line.X, line.Y);
+                    Console.Write(line.Text);
+                }
+            }
+
+
+            Console.CursorVisible = false;
+
+            var arr = new[]
+            {
+            @"  ███╗░░░███╗░█████╗░███╗░░██╗░██████╗░░█████╗░",
+            @"  ████╗░████║██╔══██╗████╗░██║██╔════╝░██╔══██╗",
+            @"  ██╔████╔██║███████║██╔██╗██║██║░░██╗░██║░░██║",
+            @"  ██║╚██╔╝██║██╔══██║██║╚████║██║░░╚██╗██║░░██║",
+            @"  ██║░╚═╝░██║██║░░██║██║░╚███║╚██████╔╝╚█████╔╝",
+            @"  ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░░╚════╝░",
+            @"  ██████╗░░█████╗░███╗░░██╗██╗░░██╗  ██╗",
+            @"  ██╔══██╗██╔══██╗████╗░██║██║░██╔╝  ██║",
+            @"  ██████╦╝███████║██╔██╗██║█████═╝░  ██║",
+            @"  ██╔══██╗██╔══██║██║╚████║██╔═██╗░  ╚═╝",
+            @"  ██████╦╝██║░░██║██║░╚███║██║░╚██╗  ██╗",
+            @"  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝  ╚═╝",
+                };
+
+            var maxLength = arr.Aggregate(0, (max, line) => Math.Max(max, line.Length));
+            var x = Console.BufferWidth / 2 - maxLength / 2;
+            for (int y = -arr.Length; y < Console.WindowHeight + arr.Length; y++)
+            {
+                ConsoleDraw(arr, x, y);
+                Thread.Sleep(100);
+            }
 
 
 
