@@ -7,11 +7,13 @@ namespace Team.Mango.Bank_Application
     {
         public string _AccountName;
         public double _Balance;
+        public string _CurrencyType;
 
-        public BankAccount(string accountname, double balance)
+        public BankAccount(string accountname, double balance, string type)
         {
             _AccountName = accountname;
             _Balance = balance;
+            _CurrencyType = type;
         }
 
         public string AccountName
@@ -25,6 +27,12 @@ namespace Team.Mango.Bank_Application
             set { _Balance = value; }
         }
 
+        public string CurrencyType
+        {
+            get { return _CurrencyType; }
+            set { _CurrencyType = value; }
+        }
+
         public static void ShowAccounts(User CurrentUser)
         {
             Console.WriteLine("Private accounts");
@@ -32,14 +40,31 @@ namespace Team.Mango.Bank_Application
             // Account start with nr 1
             int A = 1;
             //Set CurrentUsers BankAccountList as UserAcc and loop through all accounts
-            List<BankAccount> UserAcc = CurrentUser.BankAccountList;
-            foreach (var item in UserAcc)
+            List<BankAccount> printSEK = CurrentUser.BankAccountList.FindAll(c => c.CurrencyType == "SEK");
+            foreach (var item in printSEK)
             {
-                double balance = item.Balance;
-                Console.WriteLine(A + ". {0}: {1:f2} SEK", item.AccountName, balance);
+                double balanceSEK = item.Balance;
+                Console.WriteLine(A + ". {0}: {1:f2} SEK", item.AccountName, balanceSEK);
                 Console.WriteLine();
                 A++;
             }
+
+            List<BankAccount> printUSD = CurrentUser.BankAccountList.FindAll(c => c.CurrencyType == "USD");
+            foreach (var item in printUSD)
+            {
+                double balanceUSD = item.Balance;
+                Console.WriteLine(A + ". {0}: {1:f2} USD", item.AccountName, balanceUSD);
+                Console.WriteLine();
+                A++;
+            }
+
+
+
+
+
+
+
+
         }
         public static void OpenBankAccount(User CurrentUser)
         {
@@ -53,7 +78,7 @@ namespace Team.Mango.Bank_Application
             double amount = double.Parse(Console.ReadLine());
 
             List<BankAccount> NewBankAcc = CurrentUser.BankAccountList;
-            BankAccount BankAccInfo = new BankAccount(accountName, amount);
+            BankAccount BankAccInfo = new BankAccount(accountName, amount,"SEK");
             NewBankAcc.Add(BankAccInfo);
 
         }

@@ -14,7 +14,7 @@ namespace Team.Mango.Bank_Application
 
 
         // In transfer
-        public void transferMenu(List<BankAccount> CurrentUserAccounts, User CurrentUser, List<User> Users)
+        public void transferMenu(List<BankAccount> CurrentUserAccounts, User CurrentUser, List<User> Users, CurrencyRates CurrRate)
         {
             bool Tmenu = true;
 
@@ -36,7 +36,7 @@ namespace Team.Mango.Bank_Application
                     switch (choice)
                     {
                         case 1:
-                            internalTransfer(CurrentUserAccounts, CurrentUser);
+                            internalTransfer(CurrentUserAccounts, CurrentUser, CurrRate);
                             break;
 
                         case 2:
@@ -63,7 +63,7 @@ namespace Team.Mango.Bank_Application
 
 
         }
-        public void internalTransfer(List<BankAccount> CurrentUserAccounts, User CurrentUser)
+        public void internalTransfer(List<BankAccount> CurrentUserAccounts, User CurrentUser, CurrencyRates CurrRate)
         {
             //iTloop = "internal transfer loop"
             bool iTloop1 = true;

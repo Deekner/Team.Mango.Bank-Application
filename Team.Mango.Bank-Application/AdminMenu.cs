@@ -7,7 +7,7 @@ namespace Team.Mango.Bank_Application
     public class AdminMenu
     {
         //ADMIN Menu
-        public void adminMenu(List<User> Users, User CurrentUser)
+        public void adminMenu(List<User> Users, User CurrentUser, CurrencyRates CurrRate)
         {
             do
             {
@@ -16,10 +16,11 @@ namespace Team.Mango.Bank_Application
                 Console.WriteLine("--------------------------------------");
                 Console.WriteLine("|    [1.]  Show All Users            | ");
                 Console.WriteLine("|    [2.]  Create Account            | ");
-                Console.WriteLine("|    [3.]  Logout                    | ");
-                Console.WriteLine("|    [4.]  Exit application          | ");
+                Console.WriteLine("|    [3.]  Update Current Rate:{0} | ", Math.Round(CurrRate._currencyRate, 2));
+                Console.WriteLine("|    [4.]  Logout                    | ");
+                Console.WriteLine("|    [5.]  Exit application          | ");
                 Console.WriteLine("--------------------------------------");
-
+                
 
                 try
                 {
@@ -28,7 +29,7 @@ namespace Team.Mango.Bank_Application
                     switch (choice)
                     {
                         case 1:
-                            CurrentUser.ShowAllUsers(Users, CurrentUser);
+                            CurrentUser.ShowAllUsers(Users, CurrentUser, CurrRate);
                             break;
 
                         case 2:
@@ -37,12 +38,17 @@ namespace Team.Mango.Bank_Application
                             break;
 
                         case 3:
+                            CurrencyRates.UpdateCurrentcyRate(CurrRate);
+                            break;
+
+                        case 4:
                             Login logout = new Login();
-                            logout.UserLogin(Users);
+                            logout.UserLogin(Users, CurrRate);
                             break;
 
 
-                        case 4:
+
+                        case 5:
                             Environment.Exit(0);
                             break;
 

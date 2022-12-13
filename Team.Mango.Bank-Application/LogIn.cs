@@ -10,7 +10,7 @@ namespace Team.Mango.Bank_Application
         public int Attempt = 2;
 
         //UserLogin method gets data from BankStart List<User> Users
-        public void UserLogin(List<User> Users)
+        public void UserLogin(List<User> Users, CurrencyRates CurrRate)
         {
             Console.Clear();
             Console.WriteLine("Please enter Username and Password");
@@ -35,7 +35,7 @@ namespace Team.Mango.Bank_Application
                             User CurrentUser = Users.Find(f => f.Username == username);
                             //Sending Users if Admin need to create a new user
                             AdminMenu adminM = new AdminMenu();
-                             adminM.adminMenu(Users, CurrentUser);
+                             adminM.adminMenu(Users, CurrentUser, CurrRate);
 
 
 
@@ -47,7 +47,7 @@ namespace Team.Mango.Bank_Application
                             LoginGranted = true;
                             //Checking if Username exist
                             User CurrentUser = Users.Find(f => f.Username == username);
-                            Menu.MenuOptions(Users, CurrentUser);
+                            Menu.MenuOptions(Users, CurrentUser, CurrRate);
 
                         }
 
