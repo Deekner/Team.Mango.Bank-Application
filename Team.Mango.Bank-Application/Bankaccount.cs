@@ -59,14 +59,8 @@ namespace Team.Mango.Bank_Application
             }
 
 
-
-
-
-
-
-
         }
-        public static void OpenBankAccount(List<User> Users, User CurrentUser)
+        public static void OpenBankAccount(List<User> Users, User CurrentUser, CurrencyRates CurrRate)
         {
 
             Console.Clear();
@@ -82,15 +76,15 @@ namespace Team.Mango.Bank_Application
                     switch (Userinput)
                     {
                         case 1:
-                            OpenCheckingAccount(Users, CurrentUser);
+                            OpenCheckingAccount(Users, CurrentUser, CurrRate);
                             break;
 
                         case 2:
-                            OpenSavingAccount(Users, CurrentUser);
+                            OpenSavingAccount(Users, CurrentUser, CurrRate);
                             break;
 
                         default:
-                            Menu.MenuOptions(Users, CurrentUser);
+                            Menu.MenuOptions(Users, CurrentUser, CurrRate);
                             break;
                     }
                 }
@@ -102,7 +96,7 @@ namespace Team.Mango.Bank_Application
             } while (true);
         }
 
-        public static void OpenCheckingAccount(List<User> Users, User CurrentUser)
+        public static void OpenCheckingAccount(List<User> Users, User CurrentUser, CurrencyRates CurrRate)
         {
             Console.Clear();
             Console.WriteLine("-------- Open Bank account --------\n");
@@ -115,11 +109,11 @@ namespace Team.Mango.Bank_Application
             List<BankAccount> NewBankAcc = CurrentUser.BankAccountList;
             BankAccount BankAccInfo = new BankAccount(accountName, amount,"SEK");
             NewBankAcc.Add(BankAccInfo);
-            Menu.MenuOptions(Users, CurrentUser);
+            Menu.MenuOptions(Users, CurrentUser, CurrRate);
 
         }
 
-        public static void OpenSavingAccount(List<User> Users, User CurrentUser)
+        public static void OpenSavingAccount(List<User> Users, User CurrentUser, CurrencyRates CurrRate)
         {
             Console.Clear();
             Console.WriteLine("-------- Open Savings account --------\n");
@@ -139,9 +133,9 @@ namespace Team.Mango.Bank_Application
 
             //Adds the newly created bank account to current users bank list of accounts
             List<BankAccount> NewBankAcc = CurrentUser.BankAccountList;
-            BankAccount BankAccInfo = new BankAccount(accountName, amount);
+            BankAccount BankAccInfo = new BankAccount(accountName, amount, "SEK");
             NewBankAcc.Add(BankAccInfo);
-            Menu.MenuOptions(Users, CurrentUser);
+            Menu.MenuOptions(Users, CurrentUser, CurrRate);
         }
     }
 }
