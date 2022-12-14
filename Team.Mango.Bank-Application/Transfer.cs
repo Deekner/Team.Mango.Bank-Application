@@ -160,7 +160,7 @@ namespace Team.Mango.Bank_Application
                 try
                 {
                     transferAmmount = double.Parse(Console.ReadLine());
-                    if (transferAmmount > 0)
+                    if (transferAmmount > 0 && transferAmmount <= CurrentUserAccounts[accFrom].Balance)
                     {
                         iTloop2 = false;
                     }

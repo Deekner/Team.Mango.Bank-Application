@@ -14,11 +14,11 @@ namespace Team.Mango.Bank_Application
                 Console.Clear();
                 string Mmenu = "             MAIN MENU             ";
                 string Mlines = "--------------------------------------";
-                string Maccounts = "|    [1.]  Accounts                  | ";
-                string Mtransfer = "|    [2.]  Transfer                  | ";
-                string Mopenaccount = "|    [3.]  Open New Bank Account     | ";
-                string Mlogout = "|    [4.]  Logout                    | ";
-                string Mexit = "|    [5.]  Exit application          | ";
+                string Maccounts = "    [1.]  Accounts                   ";
+                string Mtransfer = "    [2.]  Transfer                   ";
+                string Mopenaccount = "    [3.]  Open New Bank Account      ";
+                string Mlogout = "    [4.]  Logout                     ";
+                string Mexit = "    [5.]  Exit application           ";
 
                 Console.SetCursorPosition((Console.WindowWidth - Mmenu.Length) / 2, Console.CursorTop);
                 Console.WriteLine(Mmenu);
