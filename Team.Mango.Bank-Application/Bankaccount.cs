@@ -128,7 +128,7 @@ namespace Team.Mango.Bank_Application
             //This calculate the interest
             double interest = amount * InterestRate.IntRateMultiply();
 
-            Console.WriteLine("\nWith the current interest rate you'll make {0} from your deposit following the next 12 months", interest);
+            Console.WriteLine("\nWith the current interest rate you'll make {0} from your deposit following the next 12 months", Math.Round(interest, 2));
             Console.ReadLine();
 
             //Adds the newly created bank account to current users bank list of accounts
