@@ -24,11 +24,11 @@ namespace Team.Mango.Bank_Application
                 Console.Clear();
                 string Mmenu = "             MAIN MENU             ";
                 string Mlines = "--------------------------------------";
-                string Maccounts = "|    [1.]  Show All Users            | ";
-                string CreateA = "|    [2.]  Create Account            | ";
-                string UpdateCurr = "|    [3.]  Update Current Rate:    | ";
-                string Mlogout = "|    [4.]  Logout                    | ";
-                string Mexit = "|    [5.]  Exit application          | ";
+                string Maccounts = "    [1.]  Show All Users             ";
+                string CreateA = "    [2.]  Create Account             ";
+                string UpdateCurr = " [3.]  Update Current Rate:    ";
+                string Mlogout = "    [4.]  Logout                     ";
+                string Mexit = "    [5.]  Exit application           ";
 
                 Console.SetCursorPosition((Console.WindowWidth - Mmenu.Length) / 2, Console.CursorTop);
                 Console.WriteLine(Mmenu);
