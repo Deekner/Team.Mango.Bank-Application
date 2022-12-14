@@ -12,7 +12,7 @@ namespace Team.Mango.Bank_Application
     {       // In here we will start the bankprogram
         public void RunBank()
         {
-            //welcome();
+            welcome();
             //Making a list of Users from User
             List<User> Users = new List<User>();
 
