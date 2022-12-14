@@ -19,7 +19,7 @@ namespace Team.Mango.Bank_Application
             double newInterestRate = R.NextDouble();
             double interestRate = intRateMin * newInterestRate;
 
-            Console.WriteLine("Current interest rate is {0} at the Mango Bank Inc", interestRate);
+            Console.WriteLine("Current interest rate is {0} at the Mango Bank Inc", Math.Round(interestRate, 2));
             return interestRate;
 
 
