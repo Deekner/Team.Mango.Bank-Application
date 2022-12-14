@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Team.Mango.Bank_Application
 {
@@ -366,6 +367,8 @@ namespace Team.Mango.Bank_Application
                 {
                     //CurrentUsers account
                     CurrentUserAccounts[accFrom].Balance -= transferAmmount;
+                    Console.WriteLine("Please wait 10 seconds");
+                    Thread.Sleep(10000);
                     //User to transfer to acocunt
                     accName[0].Balance += transferAmmount;
                     Console.WriteLine("You have transfered {0} {1} from account name: {2} to {3}", transferAmmount, CurrentUserAccounts[accFrom].CurrencyType, CurrentUserAccounts[accFrom].AccountName, transferTo);
